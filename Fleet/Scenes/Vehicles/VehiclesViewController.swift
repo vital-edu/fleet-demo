@@ -10,7 +10,27 @@ import UIKit
 class VehiclesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBar()
         setupTableView()
+    }
+
+    private func setupNavigationBar() {
+        let refreshButton = UIBarButtonItem(image: UIImage(named: "refresh"), style: .done, target: self, action: #selector(refresh))
+        let apiKeyButton = UIBarButtonItem(image: UIImage(named: "key"), style: .plain, target: self, action: #selector(changeApiKey))
+
+        refreshButton.tintColor = .black
+        apiKeyButton.tintColor = .black
+        navigationItem.title = "Vehicles"
+        navigationItem.leftBarButtonItem = refreshButton
+        navigationItem.rightBarButtonItem = apiKeyButton
+    }
+
+    @objc private func refresh() {
+        print("refresh clicked")
+    }
+
+    @objc private func changeApiKey() {
+        print("change API Key clicked")
     }
 
     private func setupTableView() {
