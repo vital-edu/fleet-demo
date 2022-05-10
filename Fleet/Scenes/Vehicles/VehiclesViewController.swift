@@ -10,6 +10,11 @@ import UIKit
 class VehiclesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
+    }
+
+    private func setupTableView() {
+        tableView.register(VehicleCell.self, forCellReuseIdentifier: VehicleCell.identifier)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -19,12 +24,13 @@ class VehiclesViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: VehicleCell.identifier)
 
-        cell.textLabel?.text = "14444 / AAAAA"
-        cell.detailTextLabel?.text = "Kostoni, Tortu, Estnonia"
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: VehicleCell.identifier) as? VehicleCell else {
+            return UITableViewCell()
+        }
+
+        cell.setup(leftTitle: "1444", rightTitle: "AAA", leftSubtitle: "Kostoni", rightSubtitle: "Estonia")
 
         return cell
     }
