@@ -10,11 +10,11 @@ import UIKit
 
 class AppCoordinator: Coordinator {
     let window: UIWindow?
-    
+
     lazy var rootViewController: UINavigationController = {
         return UINavigationController(rootViewController: UIViewController())
     }()
-    
+
     init(window: UIWindow?) {
         self.window = window
     }
@@ -23,5 +23,9 @@ class AppCoordinator: Coordinator {
         guard let window = window else { return }
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
+
+        let vehicleCoordinator = VehiclesCoordinator(rootViewController: rootViewController)
+        addChild(vehicleCoordinator)
+        vehicleCoordinator.start()
     }
 }

@@ -13,6 +13,9 @@
 		E88E5EC028287EE4002CB004 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E88E5EBE28287EE4002CB004 /* LaunchScreen.storyboard */; };
 		E88E5ECD28288D14002CB004 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5ECC28288D14002CB004 /* AppCoordinator.swift */; };
 		E88E5ECF28288D1E002CB004 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5ECE28288D1E002CB004 /* Coordinator.swift */; };
+		E88E5EF02829E978002CB004 /* VehiclesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EEF2829E978002CB004 /* VehiclesCoordinator.swift */; };
+		E88E5EF22829E9A5002CB004 /* VehiclesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EF12829E9A5002CB004 /* VehiclesViewController.swift */; };
+		E88E5EF92829EEAC002CB004 /* VehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EF82829EEAC002CB004 /* VehicleCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		E88E5EC128287EE4002CB004 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E88E5ECC28288D14002CB004 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		E88E5ECE28288D1E002CB004 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		E88E5EEF2829E978002CB004 /* VehiclesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesCoordinator.swift; sourceTree = "<group>"; };
+		E88E5EF12829E9A5002CB004 /* VehiclesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesViewController.swift; sourceTree = "<group>"; };
+		E88E5EF82829EEAC002CB004 /* VehicleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +71,7 @@
 		E88E5ECA28288CF6002CB004 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				E88E5ED52828AD84002CB004 /* Vehicles */,
 				E88E5ED128289ADA002CB004 /* Core */,
 			);
 			path = Scenes;
@@ -89,6 +96,24 @@
 				E88E5ECC28288D14002CB004 /* AppCoordinator.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		E88E5ED52828AD84002CB004 /* Vehicles */ = {
+			isa = PBXGroup;
+			children = (
+				E88E5EF72829EE9B002CB004 /* Views */,
+				E88E5EEF2829E978002CB004 /* VehiclesCoordinator.swift */,
+				E88E5EF12829E9A5002CB004 /* VehiclesViewController.swift */,
+			);
+			path = Vehicles;
+			sourceTree = "<group>";
+		};
+		E88E5EF72829EE9B002CB004 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E88E5EF82829EEAC002CB004 /* VehicleCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,10 +186,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E88E5EF22829E9A5002CB004 /* VehiclesViewController.swift in Sources */,
 				E88E5ECD28288D14002CB004 /* AppCoordinator.swift in Sources */,
 				E88E5ECF28288D1E002CB004 /* Coordinator.swift in Sources */,
+				E88E5EF92829EEAC002CB004 /* VehicleCell.swift in Sources */,
 				E88E5EB428287EE3002CB004 /* AppDelegate.swift in Sources */,
 				E88E5EB628287EE3002CB004 /* SceneDelegate.swift in Sources */,
+				E88E5EF02829E978002CB004 /* VehiclesCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
