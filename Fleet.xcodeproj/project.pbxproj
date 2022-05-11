@@ -7,19 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E84AE614282A70AB0020CC1B /* VehiclesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84AE613282A70AB0020CC1B /* VehiclesViewModel.swift */; };
 		E88E5EB428287EE3002CB004 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EB328287EE3002CB004 /* AppDelegate.swift */; };
 		E88E5EB628287EE3002CB004 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EB528287EE3002CB004 /* SceneDelegate.swift */; };
 		E88E5EBD28287EE4002CB004 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E88E5EBC28287EE4002CB004 /* Assets.xcassets */; };
 		E88E5EC028287EE4002CB004 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E88E5EBE28287EE4002CB004 /* LaunchScreen.storyboard */; };
 		E88E5ECD28288D14002CB004 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5ECC28288D14002CB004 /* AppCoordinator.swift */; };
 		E88E5ECF28288D1E002CB004 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5ECE28288D1E002CB004 /* Coordinator.swift */; };
+		E88E5ED92828ADD2002CB004 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5ED82828ADD2002CB004 /* Vehicle.swift */; };
 		E88E5EF02829E978002CB004 /* VehiclesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EEF2829E978002CB004 /* VehiclesCoordinator.swift */; };
 		E88E5EF22829E9A5002CB004 /* VehiclesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EF12829E9A5002CB004 /* VehiclesViewController.swift */; };
+		E88E5EF42829EA3B002CB004 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EF32829EA3B002CB004 /* Dynamic.swift */; };
 		E88E5EF62829EE60002CB004 /* ViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EF52829EE60002CB004 /* ViewConfiguration.swift */; };
 		E88E5EF92829EEAC002CB004 /* VehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EF82829EEAC002CB004 /* VehicleCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E84AE613282A70AB0020CC1B /* VehiclesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesViewModel.swift; sourceTree = "<group>"; };
 		E88E5EB028287EE3002CB004 /* Fleet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fleet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E88E5EB328287EE3002CB004 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E88E5EB528287EE3002CB004 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,8 +32,10 @@
 		E88E5EC128287EE4002CB004 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E88E5ECC28288D14002CB004 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		E88E5ECE28288D1E002CB004 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		E88E5ED82828ADD2002CB004 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		E88E5EEF2829E978002CB004 /* VehiclesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesCoordinator.swift; sourceTree = "<group>"; };
 		E88E5EF12829E9A5002CB004 /* VehiclesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesViewController.swift; sourceTree = "<group>"; };
+		E88E5EF32829EA3B002CB004 /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
 		E88E5EF52829EE60002CB004 /* ViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfiguration.swift; sourceTree = "<group>"; };
 		E88E5EF82829EEAC002CB004 /* VehicleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,8 +111,10 @@
 			isa = PBXGroup;
 			children = (
 				E88E5EF72829EE9B002CB004 /* Views */,
+				E88E5ED82828ADD2002CB004 /* Vehicle.swift */,
 				E88E5EEF2829E978002CB004 /* VehiclesCoordinator.swift */,
 				E88E5EF12829E9A5002CB004 /* VehiclesViewController.swift */,
+				E84AE613282A70AB0020CC1B /* VehiclesViewModel.swift */,
 			);
 			path = Vehicles;
 			sourceTree = "<group>";
@@ -114,6 +122,7 @@
 		E88E5EDA2828B4F8002CB004 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E88E5EF32829EA3B002CB004 /* Dynamic.swift */,
 				E88E5EF52829EE60002CB004 /* ViewConfiguration.swift */,
 			);
 			path = Shared;
@@ -198,7 +207,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E88E5EF62829EE60002CB004 /* ViewConfiguration.swift in Sources */,
+				E88E5EF42829EA3B002CB004 /* Dynamic.swift in Sources */,
 				E88E5EF22829E9A5002CB004 /* VehiclesViewController.swift in Sources */,
+				E88E5ED92828ADD2002CB004 /* Vehicle.swift in Sources */,
+				E84AE614282A70AB0020CC1B /* VehiclesViewModel.swift in Sources */,
 				E88E5ECD28288D14002CB004 /* AppCoordinator.swift in Sources */,
 				E88E5ECF28288D1E002CB004 /* Coordinator.swift in Sources */,
 				E88E5EF92829EEAC002CB004 /* VehicleCell.swift in Sources */,

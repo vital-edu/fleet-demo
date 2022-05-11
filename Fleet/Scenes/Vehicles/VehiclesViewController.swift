@@ -8,10 +8,15 @@
 import UIKit
 
 class VehiclesViewController: UITableViewController {
+    var viewModel: VehiclesViewModelProtocol? {
+        didSet { setupUI() }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
         setupTableView()
+        setupUI()
     }
 
     private func setupNavigationBar() {
@@ -20,17 +25,25 @@ class VehiclesViewController: UITableViewController {
 
         refreshButton.tintColor = .black
         apiKeyButton.tintColor = .black
-        navigationItem.title = "Vehicles"
         navigationItem.leftBarButtonItem = refreshButton
         navigationItem.rightBarButtonItem = apiKeyButton
     }
 
+    private func setupUI() {
+        guard isViewLoaded, let viewModel = viewModel else { return }
+        navigationItem.title = viewModel.navigationTitle
+        viewModel.items.bind({ [weak self] items in
+            guard let self = self else { return }
+            self.tableView.reloadData()
+        })
+    }
+
     @objc private func refresh() {
-        print("refresh clicked")
+        viewModel?.refresh()
     }
 
     @objc private func changeApiKey() {
-        print("change API Key clicked")
+        viewModel?.changeApiKey()
     }
 
     private func setupTableView() {
@@ -42,16 +55,20 @@ class VehiclesViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return viewModel?.items.value.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: VehicleCell.identifier) as? VehicleCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: VehicleCell.identifier) as? VehicleCell, let item = viewModel?.items.value[indexPath.row] else {
             return UITableViewCell()
         }
 
-        cell.setup(leftTitle: "1444", rightTitle: "AAA", leftSubtitle: "Kostoni", rightSubtitle: "Estonia")
+        cell.setup(leftTitle: item.leftTitle, rightTitle: item.rightTitle, leftSubtitle: item.leftSubtitle, rightSubtitle: item.rightSubtitle)
 
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel?.didSelect(row: indexPath.row, from: self)
     }
 }
