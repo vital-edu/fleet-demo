@@ -28,6 +28,9 @@
 		E8AB9BCF282C948800A400CB /* LocalDataStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BCE282C948800A400CB /* LocalDataStoreMock.swift */; };
 		E8AB9BD3282CA2BD00A400CB /* ApiKeyViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BD2282CA2BD00A400CB /* ApiKeyViewModelTests.swift */; };
 		E8AB9BD6282CA31800A400CB /* ApiKeyServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BD5282CA31800A400CB /* ApiKeyServiceMock.swift */; };
+		E8AB9BD8282D0DA400A400CB /* VehiclesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BD7282D0DA400A400CB /* VehiclesService.swift */; };
+		E8AB9BDA282D0EF500A400CB /* VehiclesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BD9282D0EF500A400CB /* VehiclesDataSource.swift */; };
+		E8AB9BDC282D10D900A400CB /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BDB282D10D900A400CB /* UserDefaultsKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +69,9 @@
 		E8AB9BCE282C948800A400CB /* LocalDataStoreMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataStoreMock.swift; sourceTree = "<group>"; };
 		E8AB9BD2282CA2BD00A400CB /* ApiKeyViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyViewModelTests.swift; sourceTree = "<group>"; };
 		E8AB9BD5282CA31800A400CB /* ApiKeyServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyServiceMock.swift; sourceTree = "<group>"; };
+		E8AB9BD7282D0DA400A400CB /* VehiclesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesService.swift; sourceTree = "<group>"; };
+		E8AB9BD9282D0EF500A400CB /* VehiclesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesDataSource.swift; sourceTree = "<group>"; };
+		E8AB9BDB282D10D900A400CB /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +159,8 @@
 				E88E5EEF2829E978002CB004 /* VehiclesCoordinator.swift */,
 				E88E5EF12829E9A5002CB004 /* VehiclesViewController.swift */,
 				E84AE613282A70AB0020CC1B /* VehiclesViewModel.swift */,
+				E8AB9BD7282D0DA400A400CB /* VehiclesService.swift */,
+				E8AB9BD9282D0EF500A400CB /* VehiclesDataSource.swift */,
 			);
 			path = Vehicles;
 			sourceTree = "<group>";
@@ -163,6 +171,7 @@
 				E88E5EE82828BF14002CB004 /* LocalDataStore.swift */,
 				E88E5EF32829EA3B002CB004 /* Dynamic.swift */,
 				E88E5EF52829EE60002CB004 /* ViewConfiguration.swift */,
+				E8AB9BDB282D10D900A400CB /* UserDefaultsKey.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -342,10 +351,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8AB9BDC282D10D900A400CB /* UserDefaultsKey.swift in Sources */,
 				E861C557282B54FD001CD326 /* ApiKeyViewController.swift in Sources */,
 				E88E5EEB2829DAD3002CB004 /* ApiKeyViewModel.swift in Sources */,
 				E88E5EE92828BF14002CB004 /* LocalDataStore.swift in Sources */,
 				E88E5EF62829EE60002CB004 /* ViewConfiguration.swift in Sources */,
+				E8AB9BD8282D0DA400A400CB /* VehiclesService.swift in Sources */,
 				E88E5EF42829EA3B002CB004 /* Dynamic.swift in Sources */,
 				E88E5EF22829E9A5002CB004 /* VehiclesViewController.swift in Sources */,
 				E88E5ED92828ADD2002CB004 /* Vehicle.swift in Sources */,
@@ -355,6 +366,7 @@
 				E88E5ECF28288D1E002CB004 /* Coordinator.swift in Sources */,
 				E88E5EF92829EEAC002CB004 /* VehicleCell.swift in Sources */,
 				E88E5EB428287EE3002CB004 /* AppDelegate.swift in Sources */,
+				E8AB9BDA282D0EF500A400CB /* VehiclesDataSource.swift in Sources */,
 				E88E5EB628287EE3002CB004 /* SceneDelegate.swift in Sources */,
 				E88E5EF02829E978002CB004 /* VehiclesCoordinator.swift in Sources */,
 			);

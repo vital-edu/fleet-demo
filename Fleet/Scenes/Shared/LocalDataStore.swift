@@ -32,7 +32,3 @@ class LocalDataStore: LocalDataStoreProtocol {
         return store.string(forKey: key)
     }
 }
-
-enum UserDefaultsKey: String {
-    case apiKey
-}
