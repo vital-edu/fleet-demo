@@ -15,7 +15,7 @@ protocol ApiKeyServiceProtocol {
 
 class ApiKeyService: ApiKeyServiceProtocol {
     var store: LocalStoreServiceProtocol
-    let storeKey = "ApiKey"
+    let storeKey = UserDefaultsKey.apiKey.rawValue
 
     init(store: LocalStoreServiceProtocol) {
         self.store = store
