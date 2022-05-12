@@ -26,8 +26,12 @@ class ApiRequestInterceptor: RequestInterceptor {
             var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
             let keyQueryItem = URLQueryItem(name: "key", value: apiKey)
             let jsonQueryItem = URLQueryItem(name: "json", value: "true")
-            components?.queryItems?.append(keyQueryItem)
-            components?.queryItems?.append(jsonQueryItem)
+            if components?.queryItems == nil {
+                components?.queryItems = [keyQueryItem, jsonQueryItem]
+            } else {
+                components?.queryItems?.append(keyQueryItem)
+                components?.queryItems?.append(jsonQueryItem)
+            }
             urlRequest.url = components?.url
             completion(.success(urlRequest))
         }

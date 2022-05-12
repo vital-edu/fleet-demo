@@ -36,6 +36,7 @@
 		E8AB9BDF282D157000A400CB /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E8AB9BDE282D157000A400CB /* Alamofire */; };
 		E8AB9BE1282D173F00A400CB /* ApiRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BE0282D173F00A400CB /* ApiRequestInterceptor.swift */; };
 		E8AB9BE3282D278B00A400CB /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BE2282D278B00A400CB /* NetworkError.swift */; };
+		E8AB9BE6282D3B8800A400CB /* ApiRequestInterceptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BE5282D3B8800A400CB /* ApiRequestInterceptorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		E8AB9BDB282D10D900A400CB /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		E8AB9BE0282D173F00A400CB /* ApiRequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestInterceptor.swift; sourceTree = "<group>"; };
 		E8AB9BE2282D278B00A400CB /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		E8AB9BE5282D3B8800A400CB /* ApiRequestInterceptorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestInterceptorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				E8AB9BCD282C945D00A400CB /* Mocks */,
+				E8AB9BE4282D38CC00A400CB /* Network */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -266,6 +269,14 @@
 				E8AB9BD5282CA31800A400CB /* ApiKeyServiceMock.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		E8AB9BE4282D38CC00A400CB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E8AB9BE5282D3B8800A400CB /* ApiRequestInterceptorTests.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -405,6 +416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8AB9BD6282CA31800A400CB /* ApiKeyServiceMock.swift in Sources */,
+				E8AB9BE6282D3B8800A400CB /* ApiRequestInterceptorTests.swift in Sources */,
 				E8AB9BD3282CA2BD00A400CB /* ApiKeyViewModelTests.swift in Sources */,
 				E8AB9BCC282C8AB600A400CB /* ApiKeyServiceTests.swift in Sources */,
 				E8AB9BCF282C948800A400CB /* LocalDataStoreMock.swift in Sources */,
