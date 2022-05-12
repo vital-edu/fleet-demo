@@ -15,6 +15,8 @@
 		E88E5ECD28288D14002CB004 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5ECC28288D14002CB004 /* AppCoordinator.swift */; };
 		E88E5ECF28288D1E002CB004 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5ECE28288D1E002CB004 /* Coordinator.swift */; };
 		E88E5ED92828ADD2002CB004 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5ED82828ADD2002CB004 /* Vehicle.swift */; };
+		E88E5EE92828BF14002CB004 /* LocalStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EE82828BF14002CB004 /* LocalStoreService.swift */; };
+		E88E5EED2829DBF2002CB004 /* ApiKeyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EEC2829DBF2002CB004 /* ApiKeyService.swift */; };
 		E88E5EF02829E978002CB004 /* VehiclesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EEF2829E978002CB004 /* VehiclesCoordinator.swift */; };
 		E88E5EF22829E9A5002CB004 /* VehiclesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EF12829E9A5002CB004 /* VehiclesViewController.swift */; };
 		E88E5EF42829EA3B002CB004 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EF32829EA3B002CB004 /* Dynamic.swift */; };
@@ -122,10 +124,19 @@
 		E88E5EDA2828B4F8002CB004 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E88E5EE82828BF14002CB004 /* LocalStoreService.swift */,
 				E88E5EF32829EA3B002CB004 /* Dynamic.swift */,
 				E88E5EF52829EE60002CB004 /* ViewConfiguration.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		E88E5EE72828BF03002CB004 /* Api Key */ = {
+			isa = PBXGroup;
+			children = (
+				E88E5EEC2829DBF2002CB004 /* ApiKeyService.swift */,
+			);
+			path = "Api Key";
 			sourceTree = "<group>";
 		};
 		E88E5EF72829EE9B002CB004 /* Views */ = {
@@ -206,11 +217,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E88E5EE92828BF14002CB004 /* LocalStoreService.swift in Sources */,
 				E88E5EF62829EE60002CB004 /* ViewConfiguration.swift in Sources */,
 				E88E5EF42829EA3B002CB004 /* Dynamic.swift in Sources */,
 				E88E5EF22829E9A5002CB004 /* VehiclesViewController.swift in Sources */,
 				E88E5ED92828ADD2002CB004 /* Vehicle.swift in Sources */,
 				E84AE614282A70AB0020CC1B /* VehiclesViewModel.swift in Sources */,
+				E88E5EED2829DBF2002CB004 /* ApiKeyService.swift in Sources */,
 				E88E5ECD28288D14002CB004 /* AppCoordinator.swift in Sources */,
 				E88E5ECF28288D1E002CB004 /* Coordinator.swift in Sources */,
 				E88E5EF92829EEAC002CB004 /* VehicleCell.swift in Sources */,
