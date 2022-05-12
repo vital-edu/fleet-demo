@@ -10,30 +10,21 @@ import UIKit
 
 class VehiclesCoordinator: Coordinator {
     let rootViewController: UINavigationController
+    let apiClient: ApiClient
 
-    init(rootViewController: UINavigationController) {
+    init(rootViewController: UINavigationController, apiClient: ApiClient) {
         self.rootViewController = rootViewController
+        self.apiClient = apiClient
     }
 
     override func start() {
         let viewController = VehiclesViewController()
-        let vehiclesViewData = [
-            VehicleViewData(
-                leftTitle: "114TUC / Arton Polster",
-                rightTitle: "22 hm/h",
-                leftSubtitle: "Kostoni 44, Tortu, Estonia",
-                rightSubtitle: "1m 22s ago"
-            ),
-            VehicleViewData(
-                leftTitle: "123ABC / Mikoel-Erik Tohmao",
-                rightTitle: "-",
-                leftSubtitle: "Kostoni 44, Tortu, Estonia",
-                rightSubtitle: "2h ago"
-            )
-        ]
-        let viewModel = VehiclesViewModel()
+        let service = VehiclesService(
+            remoteDataSource: VehiclesRemoteDataSource(apiClient: apiClient),
+            localDataSource: VehiclesLocalDataSource()
+        )
+        let viewModel = VehiclesViewModel(service: service)
         viewModel.delegate = self
-        viewModel.items.value = vehiclesViewData
         viewController.viewModel = viewModel
         rootViewController.setViewControllers([viewController], animated: false)
     }

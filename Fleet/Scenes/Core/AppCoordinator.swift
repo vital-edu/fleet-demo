@@ -24,7 +24,12 @@ class AppCoordinator: Coordinator {
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
 
-        let vehicleCoordinator = VehiclesCoordinator(rootViewController: rootViewController)
+        let service = ApiKeyService(store: LocalDataStore())
+        let apiClient = ApiClient(service: service)
+        let vehicleCoordinator = VehiclesCoordinator(
+            rootViewController: rootViewController,
+            apiClient: apiClient
+        )
         addChild(vehicleCoordinator)
         vehicleCoordinator.start()
     }

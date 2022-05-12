@@ -63,4 +63,12 @@ struct VehicleViewData {
     let rightTitle: String
     let leftSubtitle: String
     let rightSubtitle: String
+
+    init(model: Vehicle) {
+        self.leftTitle = "\(model.plate) / \(model.driverName)"
+        self.rightTitle = "\(model.speed) / km/h"
+        self.leftSubtitle = model.address
+        // TODO: format lastEngineOnTime
+        self.rightSubtitle = "\(model.lastEngineOnTime)"
+    }
 }

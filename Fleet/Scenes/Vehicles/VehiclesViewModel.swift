@@ -32,14 +32,21 @@ class VehiclesViewModel: VehiclesViewModelProtocol {
     weak var delegate: VehiclesViewModelCoordinatorDelegate?
     var navigationTitle: String = "Vehicles"
     var items: Dynamic<[VehicleViewData]> = Dynamic([])
+    let service: VehiclesServiceProtocol
+
+    init(service: VehiclesServiceProtocol) {
+        self.service = service
+    }
 
     func didSelect(row: Int, from controller: UIViewController) {
         print("selected vehicle \(items.value[row].leftTitle)")
     }
 
     func refresh() {
-        print("refresh clicked")
-        items.value = [items.value[0]]
+        service.getVehicles { [weak self] vehicles in
+            guard let self = self else { return }
+            self.items.value = vehicles.map { VehicleViewData(model: $0) }
+        }
     }
 
     func changeApiKey(from controller: UIViewController) {
