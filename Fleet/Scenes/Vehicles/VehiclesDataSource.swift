@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import Alamofire
 
 protocol VehiclesDataSource {
     func save(value: [Vehicle])
     func deleteAll()
-    func getAll(completion: ([Vehicle]) -> Void)
+    func getAll(completion: @escaping (Swift.Result<[Vehicle], Error>) -> Void)
 }
 
 class VehiclesLocalDataSource: VehiclesDataSource {
@@ -29,13 +30,19 @@ class VehiclesLocalDataSource: VehiclesDataSource {
         store.removeObject(forKey: key)
     }
 
-    func getAll(completion: ([Vehicle]) -> Void) {
+    func getAll(completion: (Swift.Result<[Vehicle], Error>) -> Void) {
         let vehicles = store.object(forKey: key) as? [Vehicle] ?? []
-        completion(vehicles)
+        completion(.success(vehicles))
     }
 }
 
 class VehiclesRemoteDataSource: VehiclesDataSource {
+    let apiClient: ApiClient
+
+    init(apiClient: ApiClient) {
+        self.apiClient = apiClient
+    }
+
     func save(value: [Vehicle]) {
         // TODO: Implement
     }
@@ -44,7 +51,21 @@ class VehiclesRemoteDataSource: VehiclesDataSource {
         // TODO: Implement
     }
 
-    func getAll(completion: ([Vehicle]) -> Void) {
-        // TODO: Implement
+    func getAll(completion: @escaping (Swift.Result<[Vehicle], Error>) -> Void) {
+        var url = apiClient.baseUrl
+        url?.path.append(Endpoint.vehicles.value)
+
+        guard let url = url else {
+            return completion(.failure(NetworkError.invalidUrl))
+        }
+
+        apiClient.session.request(url, method: .get).responseDecodable(of: [Vehicle].self) { response in
+            switch response.result {
+            case .success(let data):
+                completion(.success(data))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }

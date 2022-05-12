@@ -16,6 +16,8 @@
 		E88E5ECD28288D14002CB004 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5ECC28288D14002CB004 /* AppCoordinator.swift */; };
 		E88E5ECF28288D1E002CB004 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5ECE28288D1E002CB004 /* Coordinator.swift */; };
 		E88E5ED92828ADD2002CB004 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5ED82828ADD2002CB004 /* Vehicle.swift */; };
+		E88E5EDF2828B7D0002CB004 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EDE2828B7D0002CB004 /* ApiClient.swift */; };
+		E88E5EE42828B8D9002CB004 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EE32828B8D9002CB004 /* Endpoint.swift */; };
 		E88E5EE92828BF14002CB004 /* LocalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EE82828BF14002CB004 /* LocalDataStore.swift */; };
 		E88E5EEB2829DAD3002CB004 /* ApiKeyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EEA2829DAD3002CB004 /* ApiKeyViewModel.swift */; };
 		E88E5EED2829DBF2002CB004 /* ApiKeyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EEC2829DBF2002CB004 /* ApiKeyService.swift */; };
@@ -31,6 +33,9 @@
 		E8AB9BD8282D0DA400A400CB /* VehiclesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BD7282D0DA400A400CB /* VehiclesService.swift */; };
 		E8AB9BDA282D0EF500A400CB /* VehiclesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BD9282D0EF500A400CB /* VehiclesDataSource.swift */; };
 		E8AB9BDC282D10D900A400CB /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BDB282D10D900A400CB /* UserDefaultsKey.swift */; };
+		E8AB9BDF282D157000A400CB /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E8AB9BDE282D157000A400CB /* Alamofire */; };
+		E8AB9BE1282D173F00A400CB /* ApiRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BE0282D173F00A400CB /* ApiRequestInterceptor.swift */; };
+		E8AB9BE3282D278B00A400CB /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BE2282D278B00A400CB /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +60,8 @@
 		E88E5ECC28288D14002CB004 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		E88E5ECE28288D1E002CB004 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		E88E5ED82828ADD2002CB004 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
+		E88E5EDE2828B7D0002CB004 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		E88E5EE32828B8D9002CB004 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		E88E5EE82828BF14002CB004 /* LocalDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataStore.swift; sourceTree = "<group>"; };
 		E88E5EEA2829DAD3002CB004 /* ApiKeyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyViewModel.swift; sourceTree = "<group>"; };
 		E88E5EEC2829DBF2002CB004 /* ApiKeyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyService.swift; sourceTree = "<group>"; };
@@ -72,6 +79,8 @@
 		E8AB9BD7282D0DA400A400CB /* VehiclesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesService.swift; sourceTree = "<group>"; };
 		E8AB9BD9282D0EF500A400CB /* VehiclesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesDataSource.swift; sourceTree = "<group>"; };
 		E8AB9BDB282D10D900A400CB /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
+		E8AB9BE0282D173F00A400CB /* ApiRequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestInterceptor.swift; sourceTree = "<group>"; };
+		E8AB9BE2282D278B00A400CB /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8AB9BDF282D157000A400CB /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,11 +179,23 @@
 			isa = PBXGroup;
 			children = (
 				E88E5EE82828BF14002CB004 /* LocalDataStore.swift */,
+				E88E5EDB2828B521002CB004 /* Network */,
 				E88E5EF32829EA3B002CB004 /* Dynamic.swift */,
 				E88E5EF52829EE60002CB004 /* ViewConfiguration.swift */,
 				E8AB9BDB282D10D900A400CB /* UserDefaultsKey.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		E88E5EDB2828B521002CB004 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E88E5EDE2828B7D0002CB004 /* ApiClient.swift */,
+				E88E5EE32828B8D9002CB004 /* Endpoint.swift */,
+				E8AB9BE0282D173F00A400CB /* ApiRequestInterceptor.swift */,
+				E8AB9BE2282D278B00A400CB /* NetworkError.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		E88E5EE72828BF03002CB004 /* Api Key */ = {
@@ -263,6 +285,7 @@
 			);
 			name = Fleet;
 			packageProductDependencies = (
+				E8AB9BDE282D157000A400CB /* Alamofire */,
 			);
 			productName = Fleet;
 			productReference = E88E5EB028287EE3002CB004 /* Fleet.app */;
@@ -316,6 +339,7 @@
 			);
 			mainGroup = E88E5EA728287EE3002CB004;
 			packageReferences = (
+				E8AB9BDD282D157000A400CB /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = E88E5EB128287EE3002CB004 /* Products */;
 			projectDirPath = "";
@@ -351,6 +375,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E88E5EDF2828B7D0002CB004 /* ApiClient.swift in Sources */,
+				E8AB9BE1282D173F00A400CB /* ApiRequestInterceptor.swift in Sources */,
 				E8AB9BDC282D10D900A400CB /* UserDefaultsKey.swift in Sources */,
 				E861C557282B54FD001CD326 /* ApiKeyViewController.swift in Sources */,
 				E88E5EEB2829DAD3002CB004 /* ApiKeyViewModel.swift in Sources */,
@@ -358,8 +384,10 @@
 				E88E5EF62829EE60002CB004 /* ViewConfiguration.swift in Sources */,
 				E8AB9BD8282D0DA400A400CB /* VehiclesService.swift in Sources */,
 				E88E5EF42829EA3B002CB004 /* Dynamic.swift in Sources */,
+				E8AB9BE3282D278B00A400CB /* NetworkError.swift in Sources */,
 				E88E5EF22829E9A5002CB004 /* VehiclesViewController.swift in Sources */,
 				E88E5ED92828ADD2002CB004 /* Vehicle.swift in Sources */,
+				E88E5EE42828B8D9002CB004 /* Endpoint.swift in Sources */,
 				E84AE614282A70AB0020CC1B /* VehiclesViewModel.swift in Sources */,
 				E88E5EED2829DBF2002CB004 /* ApiKeyService.swift in Sources */,
 				E88E5ECD28288D14002CB004 /* AppCoordinator.swift in Sources */,
@@ -657,6 +685,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E8AB9BDD282D157000A400CB /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E8AB9BDE282D157000A400CB /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E8AB9BDD282D157000A400CB /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E88E5EA828287EE3002CB004 /* Project object */;
 }
