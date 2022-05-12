@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E84AE614282A70AB0020CC1B /* VehiclesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84AE613282A70AB0020CC1B /* VehiclesViewModel.swift */; };
+		E861C557282B54FD001CD326 /* ApiKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E861C556282B54FD001CD326 /* ApiKeyViewController.swift */; };
 		E88E5EB428287EE3002CB004 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EB328287EE3002CB004 /* AppDelegate.swift */; };
 		E88E5EB628287EE3002CB004 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EB528287EE3002CB004 /* SceneDelegate.swift */; };
 		E88E5EBD28287EE4002CB004 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E88E5EBC28287EE4002CB004 /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		E84AE613282A70AB0020CC1B /* VehiclesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesViewModel.swift; sourceTree = "<group>"; };
+		E861C556282B54FD001CD326 /* ApiKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyViewController.swift; sourceTree = "<group>"; };
 		E88E5EB028287EE3002CB004 /* Fleet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fleet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E88E5EB328287EE3002CB004 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E88E5EB528287EE3002CB004 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			children = (
 				E88E5EEA2829DAD3002CB004 /* ApiKeyViewModel.swift */,
 				E88E5EEC2829DBF2002CB004 /* ApiKeyService.swift */,
+				E861C556282B54FD001CD326 /* ApiKeyViewController.swift */,
 			);
 			path = "Api Key";
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E861C557282B54FD001CD326 /* ApiKeyViewController.swift in Sources */,
 				E88E5EEB2829DAD3002CB004 /* ApiKeyViewModel.swift in Sources */,
 				E88E5EE92828BF14002CB004 /* LocalDataStore.swift in Sources */,
 				E88E5EF62829EE60002CB004 /* ViewConfiguration.swift in Sources */,

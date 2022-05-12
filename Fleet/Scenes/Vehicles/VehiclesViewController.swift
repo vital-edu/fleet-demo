@@ -43,7 +43,7 @@ class VehiclesViewController: UITableViewController {
     }
 
     @objc private func changeApiKey() {
-        viewModel?.changeApiKey()
+        viewModel?.changeApiKey(from: self)
     }
 
     private func setupTableView() {

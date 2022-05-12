@@ -32,6 +32,7 @@ class VehiclesCoordinator: Coordinator {
             )
         ]
         let viewModel = VehiclesViewModel()
+        viewModel.delegate = self
         viewModel.items.value = vehiclesViewData
         viewController.viewModel = viewModel
         rootViewController.setViewControllers([viewController], animated: false)
@@ -39,5 +40,19 @@ class VehiclesCoordinator: Coordinator {
 
     override func finish() {
 
+    }
+}
+
+extension VehiclesCoordinator: VehiclesViewModelCoordinatorDelegate {
+    func didSelect(vehicle: VehicleViewData, from controller: UIViewController) {
+        // TODO: create next scene
+    }
+
+    func didSelectApiKey(from controller: UIViewController) {
+        let store = LocalDataStore()
+        let service = ApiKeyService(store: store)
+        let viewModel = ApiKeyViewModel(service: service)
+        let apiKeyController = ApiKeyController(viewModel: viewModel)
+        apiKeyController.present(from: controller)
     }
 }
