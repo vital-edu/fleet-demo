@@ -16,6 +16,7 @@
 		E88E5ECF28288D1E002CB004 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5ECE28288D1E002CB004 /* Coordinator.swift */; };
 		E88E5ED92828ADD2002CB004 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5ED82828ADD2002CB004 /* Vehicle.swift */; };
 		E88E5EE92828BF14002CB004 /* LocalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EE82828BF14002CB004 /* LocalDataStore.swift */; };
+		E88E5EEB2829DAD3002CB004 /* ApiKeyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EEA2829DAD3002CB004 /* ApiKeyViewModel.swift */; };
 		E88E5EED2829DBF2002CB004 /* ApiKeyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EEC2829DBF2002CB004 /* ApiKeyService.swift */; };
 		E88E5EF02829E978002CB004 /* VehiclesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EEF2829E978002CB004 /* VehiclesCoordinator.swift */; };
 		E88E5EF22829E9A5002CB004 /* VehiclesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EF12829E9A5002CB004 /* VehiclesViewController.swift */; };
@@ -24,6 +25,8 @@
 		E88E5EF92829EEAC002CB004 /* VehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EF82829EEAC002CB004 /* VehicleCell.swift */; };
 		E8AB9BCC282C8AB600A400CB /* ApiKeyServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BCB282C8AB600A400CB /* ApiKeyServiceTests.swift */; };
 		E8AB9BCF282C948800A400CB /* LocalDataStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BCE282C948800A400CB /* LocalDataStoreMock.swift */; };
+		E8AB9BD3282CA2BD00A400CB /* ApiKeyViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BD2282CA2BD00A400CB /* ApiKeyViewModelTests.swift */; };
+		E8AB9BD6282CA31800A400CB /* ApiKeyServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BD5282CA31800A400CB /* ApiKeyServiceMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,7 @@
 		E88E5ECE28288D1E002CB004 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		E88E5ED82828ADD2002CB004 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		E88E5EE82828BF14002CB004 /* LocalDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataStore.swift; sourceTree = "<group>"; };
+		E88E5EEA2829DAD3002CB004 /* ApiKeyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyViewModel.swift; sourceTree = "<group>"; };
 		E88E5EEC2829DBF2002CB004 /* ApiKeyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyService.swift; sourceTree = "<group>"; };
 		E88E5EEF2829E978002CB004 /* VehiclesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesCoordinator.swift; sourceTree = "<group>"; };
 		E88E5EF12829E9A5002CB004 /* VehiclesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +62,8 @@
 		E8AB9BCA282C8AB500A400CB /* FleetTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FleetTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		E8AB9BCB282C8AB600A400CB /* ApiKeyServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyServiceTests.swift; sourceTree = "<group>"; };
 		E8AB9BCE282C948800A400CB /* LocalDataStoreMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataStoreMock.swift; sourceTree = "<group>"; };
+		E8AB9BD2282CA2BD00A400CB /* ApiKeyViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyViewModelTests.swift; sourceTree = "<group>"; };
+		E8AB9BD5282CA31800A400CB /* ApiKeyServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyServiceMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +168,7 @@
 		E88E5EE72828BF03002CB004 /* Api Key */ = {
 			isa = PBXGroup;
 			children = (
+				E88E5EEA2829DAD3002CB004 /* ApiKeyViewModel.swift */,
 				E88E5EEC2829DBF2002CB004 /* ApiKeyService.swift */,
 			);
 			path = "Api Key";
@@ -196,7 +203,9 @@
 		E8AB9BC9282C8A7B00A400CB /* Api Key */ = {
 			isa = PBXGroup;
 			children = (
+				E8AB9BD4282CA30800A400CB /* Mocks */,
 				E8AB9BCB282C8AB600A400CB /* ApiKeyServiceTests.swift */,
+				E8AB9BD2282CA2BD00A400CB /* ApiKeyViewModelTests.swift */,
 			);
 			path = "Api Key";
 			sourceTree = "<group>";
@@ -215,6 +224,14 @@
 				E8AB9BCD282C945D00A400CB /* Mocks */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		E8AB9BD4282CA30800A400CB /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				E8AB9BD5282CA31800A400CB /* ApiKeyServiceMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,6 +339,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E88E5EEB2829DAD3002CB004 /* ApiKeyViewModel.swift in Sources */,
 				E88E5EE92828BF14002CB004 /* LocalDataStore.swift in Sources */,
 				E88E5EF62829EE60002CB004 /* ViewConfiguration.swift in Sources */,
 				E88E5EF42829EA3B002CB004 /* Dynamic.swift in Sources */,
@@ -342,6 +360,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8AB9BD6282CA31800A400CB /* ApiKeyServiceMock.swift in Sources */,
+				E8AB9BD3282CA2BD00A400CB /* ApiKeyViewModelTests.swift in Sources */,
 				E8AB9BCC282C8AB600A400CB /* ApiKeyServiceTests.swift in Sources */,
 				E8AB9BCF282C948800A400CB /* LocalDataStoreMock.swift in Sources */,
 			);
