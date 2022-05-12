@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol LocalStoreServiceProtocol {
+protocol LocalDataStoreProtocol {
     func save(value: String, forKey key: String)
     func deleteValue(forKey key: String)
     func getValue(forKey key: String) -> String?
 }
 
-class LocalStoreService: LocalStoreServiceProtocol {
+class LocalDataStore: LocalDataStoreProtocol {
     let store: UserDefaults
 
     init(store: UserDefaults = .standard) {

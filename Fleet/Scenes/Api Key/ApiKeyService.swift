@@ -8,21 +8,26 @@
 import Foundation
 
 protocol ApiKeyServiceProtocol {
-    var store: LocalStoreServiceProtocol { get }
+    var store: LocalDataStoreProtocol { get }
 
     func getApiKey(completion: (String?) -> Void)
+    func save(apiKey: String)
 }
 
 class ApiKeyService: ApiKeyServiceProtocol {
-    var store: LocalStoreServiceProtocol
+    var store: LocalDataStoreProtocol
     let storeKey = UserDefaultsKey.apiKey.rawValue
 
-    init(store: LocalStoreServiceProtocol) {
+    init(store: LocalDataStoreProtocol) {
         self.store = store
     }
 
     func getApiKey(completion: (String?) -> Void) {
         let apiKey = store.getValue(forKey: storeKey)
         completion(apiKey)
+    }
+
+    func save(apiKey: String) {
+        store.save(value: apiKey, forKey: storeKey)
     }
 }

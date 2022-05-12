@@ -1,5 +1,5 @@
 //
-//  LocalStoreServiceMock.swift
+//  LocalDataStoreMock.swift
 //  FleetTests
 //
 //  Created by Eduardo Vital Alencar Cunha on 11/05/2022.
@@ -8,7 +8,7 @@
 import Foundation
 @testable import Fleet
 
-class LocalStoreServiceMock: LocalStoreServiceProtocol {
+class LocalDataStoreMock: LocalDataStoreProtocol {
     enum Method { case save, deleteValue, getValue }
     var store = [String: String]()
     private(set) var calls = [Method: [[String: String]]]()

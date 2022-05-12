@@ -10,7 +10,7 @@ import XCTest
 
 class ApiKeyServiceTests: XCTestCase {
     func testGetApiKey_shouldReturnCorrectValue() throws {
-        let storeMock = LocalStoreServiceMock()
+        let storeMock = LocalDataStoreMock()
         let expectation = XCTestExpectation()
         let expectedResult = "testValueResult"
         storeMock.store = [
