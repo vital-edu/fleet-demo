@@ -16,8 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        coordinator.start()
+        if #available(iOS 13.0, *) {
+        } else {
+            window = UIWindow(frame: UIScreen.main.bounds)
+            coordinator.start()
+        }
+
         return true
     }
 
