@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 protocol VehiclesServiceProtocol {
-    func getVehicles(completion: @escaping ([Vehicle]) -> Void)
+    func getVehicles(completion: @escaping (Either<[Vehicle], AlertModel>) -> Void)
 }
 
 class VehiclesService: VehiclesServiceProtocol {
@@ -20,16 +21,20 @@ class VehiclesService: VehiclesServiceProtocol {
         self.remoteDataSource = remoteDataSource
     }
 
-    func getVehicles(completion: @escaping ([Vehicle]) -> Void) {
+    func getVehicles(completion: @escaping (Either<[Vehicle], AlertModel>) -> Void) {
         self.remoteDataSource.getAll { result in
             switch result {
             case .failure(let error):
                 // TODO: fetch local data
-                print(error)
-                completion([])
+                let alert = AlertModel(
+                    title: "Error",
+                    message: error.localizedDescription,
+                    primaryAction: UIAlertAction(title: "OK", style: .cancel)
+                )
+                completion(.failure(alert))
             case .success(let vehicles):
                 // TODO: save to local data store
-                completion(vehicles)
+                completion(.success(vehicles))
             }
         }
     }

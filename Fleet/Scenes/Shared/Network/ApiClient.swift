@@ -13,7 +13,7 @@ protocol ApiClientProtocol {
 }
 
 class ApiClient {
-    let baseUrl = URLComponents(string: "https://app.ecofleet.com/seeme/Api")
+    let baseUrl = URLComponents(string: "https://app.ecofleet.com/seeme/Api/Vehicles")
     let session: Session
 
     convenience init(service: ApiKeyServiceProtocol) {

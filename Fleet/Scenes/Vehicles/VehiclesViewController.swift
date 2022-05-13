@@ -39,7 +39,7 @@ class VehiclesViewController: UITableViewController {
     }
 
     @objc private func refresh() {
-        viewModel?.refresh()
+        viewModel?.refresh(from: self)
     }
 
     @objc private func changeApiKey() {

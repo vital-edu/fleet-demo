@@ -37,6 +37,9 @@
 		E8AB9BE1282D173F00A400CB /* ApiRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BE0282D173F00A400CB /* ApiRequestInterceptor.swift */; };
 		E8AB9BE3282D278B00A400CB /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BE2282D278B00A400CB /* NetworkError.swift */; };
 		E8AB9BE6282D3B8800A400CB /* ApiRequestInterceptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BE5282D3B8800A400CB /* ApiRequestInterceptorTests.swift */; };
+		E8AB9BE8282DB83400A400CB /* BodyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BE7282DB83400A400CB /* BodyResponse.swift */; };
+		E8AB9BEA282DCB3100A400CB /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BE9282DCB3100A400CB /* AlertModel.swift */; };
+		E8AB9BEC282DCBB400A400CB /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BEB282DCBB400A400CB /* Either.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +86,9 @@
 		E8AB9BE0282D173F00A400CB /* ApiRequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestInterceptor.swift; sourceTree = "<group>"; };
 		E8AB9BE2282D278B00A400CB /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		E8AB9BE5282D3B8800A400CB /* ApiRequestInterceptorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestInterceptorTests.swift; sourceTree = "<group>"; };
+		E8AB9BE7282DB83400A400CB /* BodyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyResponse.swift; sourceTree = "<group>"; };
+		E8AB9BE9282DCB3100A400CB /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
+		E8AB9BEB282DCBB400A400CB /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,7 +190,9 @@
 				E88E5EDB2828B521002CB004 /* Network */,
 				E88E5EF32829EA3B002CB004 /* Dynamic.swift */,
 				E88E5EF52829EE60002CB004 /* ViewConfiguration.swift */,
+				E8AB9BE9282DCB3100A400CB /* AlertModel.swift */,
 				E8AB9BDB282D10D900A400CB /* UserDefaultsKey.swift */,
+				E8AB9BEB282DCBB400A400CB /* Either.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -196,6 +204,7 @@
 				E88E5EE32828B8D9002CB004 /* Endpoint.swift */,
 				E8AB9BE0282D173F00A400CB /* ApiRequestInterceptor.swift */,
 				E8AB9BE2282D278B00A400CB /* NetworkError.swift */,
+				E8AB9BE7282DB83400A400CB /* BodyResponse.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -389,6 +398,7 @@
 				E88E5EDF2828B7D0002CB004 /* ApiClient.swift in Sources */,
 				E8AB9BE1282D173F00A400CB /* ApiRequestInterceptor.swift in Sources */,
 				E8AB9BDC282D10D900A400CB /* UserDefaultsKey.swift in Sources */,
+				E8AB9BE8282DB83400A400CB /* BodyResponse.swift in Sources */,
 				E861C557282B54FD001CD326 /* ApiKeyViewController.swift in Sources */,
 				E88E5EEB2829DAD3002CB004 /* ApiKeyViewModel.swift in Sources */,
 				E88E5EE92828BF14002CB004 /* LocalDataStore.swift in Sources */,
@@ -398,6 +408,8 @@
 				E8AB9BE3282D278B00A400CB /* NetworkError.swift in Sources */,
 				E88E5EF22829E9A5002CB004 /* VehiclesViewController.swift in Sources */,
 				E88E5ED92828ADD2002CB004 /* Vehicle.swift in Sources */,
+				E8AB9BEA282DCB3100A400CB /* AlertModel.swift in Sources */,
+				E8AB9BEC282DCBB400A400CB /* Either.swift in Sources */,
 				E88E5EE42828B8D9002CB004 /* Endpoint.swift in Sources */,
 				E84AE614282A70AB0020CC1B /* VehiclesViewModel.swift in Sources */,
 				E88E5EED2829DBF2002CB004 /* ApiKeyService.swift in Sources */,

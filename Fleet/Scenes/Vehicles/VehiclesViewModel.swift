@@ -11,6 +11,7 @@ import UIKit
 protocol VehiclesViewModelCoordinatorDelegate: AnyObject {
     func didSelect(vehicle: VehicleViewData, from controller: UIViewController)
     func didSelectApiKey(from controller: UIViewController)
+    func show(alert: AlertModel, from controller: UIViewController)
 }
 
 protocol VehiclesViewModelProtocol {
@@ -24,7 +25,7 @@ protocol VehiclesViewModelProtocol {
     // MARK: - Events
 
     func didSelect(row: Int, from controller: UIViewController)
-    func refresh()
+    func refresh(from controller: UIViewController)
     func changeApiKey(from controller: UIViewController)
 }
 
@@ -42,10 +43,15 @@ class VehiclesViewModel: VehiclesViewModelProtocol {
         print("selected vehicle \(items.value[row].leftTitle)")
     }
 
-    func refresh() {
-        service.getVehicles { [weak self] vehicles in
+    func refresh(from controller: UIViewController) {
+        service.getVehicles { [weak self] result in
             guard let self = self else { return }
-            self.items.value = vehicles.map { VehicleViewData(model: $0) }
+            switch result {
+            case .success(let vehicles):
+                self.items.value = vehicles.map { VehicleViewData(model: $0) }
+            case .failure(let alert):
+                self.delegate?.show(alert: alert, from: controller)
+            }
         }
     }
 

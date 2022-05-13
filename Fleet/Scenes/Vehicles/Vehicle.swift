@@ -16,24 +16,24 @@ struct Vehicle: Codable {
     let speed: Int
     let enginestate: Int
     let gpsstate: Bool
-    let direction: Int
+    let direction: Int?
     let fuel: String?
-    let power: Double
-    let CANDistance: Double
-    let available: Bool
-    let driverId: Int
+    let power: Double?
+    let CANDistance: Double?
+    let available: Bool?
+    let driverId: Int?
     let driverUuid: String?
-    let driverName: String
+    let driverName: String?
     let driverKey: String?
     let driverPhone: String?
-    let driverStatuses: [String]
-    let driverIsOnDuty: Bool
-    let dutyTags: [String]
+    let driverStatuses: [String]?
+    let driverIsOnDuty: Bool?
+    let dutyTags: [String]?
     let pairedObjectId: String?
     let pairedObjectName: String?
     let lastEngineOnTime: String
     let inPrivateZone: Bool?
-    let offWorkSchedule: Bool
+    let offWorkSchedule: Bool?
     let tripPurposeDinSet: String?
     let tcoData: String?
     let tcoCardIsPresent: Bool
@@ -54,8 +54,8 @@ struct Vehicle: Codable {
     let externalId: String?
     let plate: String
     let CANRPM: String?
-    let GreenDrivingValue: Double
-    let GreenDrivingType: Int
+    let GreenDrivingValue: Double?
+    let GreenDrivingType: Int?
 }
 
 struct VehicleViewData {

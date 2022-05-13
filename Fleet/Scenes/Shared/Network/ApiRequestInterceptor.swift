@@ -19,7 +19,7 @@ class ApiRequestInterceptor: RequestInterceptor {
         var urlRequest = urlRequest
 
         guard let url = urlRequest.url else {
-            return completion(.failure(NetworkError.invalidUrl))
+            return completion(.failure(NetworkError.blankUrl))
         }
 
         service.getApiKey { apiKey in

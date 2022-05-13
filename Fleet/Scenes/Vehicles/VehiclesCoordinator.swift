@@ -46,4 +46,17 @@ extension VehiclesCoordinator: VehiclesViewModelCoordinatorDelegate {
         let apiKeyController = ApiKeyController(viewModel: viewModel)
         apiKeyController.present(from: controller)
     }
+
+    func show(alert: AlertModel, from controller: UIViewController) {
+        let alertController = UIAlertController(
+            title: alert.title,
+            message: alert.message,
+            preferredStyle: .alert
+        )
+        alertController.addAction(alert.primaryAction)
+        if let secondaryAction = alert.secondaryAction {
+            alertController.addAction(secondaryAction)
+        }
+        controller.present(alertController, animated: true)
+    }
 }

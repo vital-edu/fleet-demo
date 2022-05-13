@@ -56,13 +56,16 @@ class VehiclesRemoteDataSource: VehiclesDataSource {
         url?.path.append(Endpoint.vehicles.value)
 
         guard let url = url else {
-            return completion(.failure(NetworkError.invalidUrl))
+            return completion(.failure(NetworkError.blankUrl))
         }
 
-        apiClient.session.request(url, method: .get).responseDecodable(of: [Vehicle].self) { response in
+        apiClient.session.request(url, method: .get).responseDecodable(of: BodyResponse<[Vehicle]>.self) { response in
             switch response.result {
             case .success(let data):
-                completion(.success(data))
+                guard let value = data.value else {
+                    return completion(.failure(NetworkError.responseWithError(message: data.errorMessage)))
+                }
+                completion(.success(value))
             case .failure(let error):
                 completion(.failure(error))
             }
