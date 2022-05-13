@@ -14,7 +14,7 @@ class ApiKeyController {
         self.viewModel = viewModel
     }
 
-    func present(from viewController: UIViewController) {
+    func present(from viewController: UIViewController, completion: @escaping (_ hasApiChanged: Bool) -> Void) {
         let alertView = UIAlertController(
             title: viewModel.title,
             message: nil,
@@ -25,6 +25,7 @@ class ApiKeyController {
                 return
             }
             self.viewModel.saveApiKey(apiKey)
+            completion(true)
         }
         let secondaryAction = UIAlertAction(title: viewModel.secondaryButtonText, style: .cancel)
 

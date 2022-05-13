@@ -10,7 +10,7 @@ import UIKit
 
 protocol VehiclesViewModelCoordinatorDelegate: AnyObject {
     func didSelect(vehicle: VehicleViewData, from controller: UIViewController)
-    func didSelectApiKey(from controller: UIViewController)
+    func didSelectApiKey(from controller: UIViewController, completion: @escaping (_ hasApiChanged: Bool) -> Void)
     func show(alert: AlertModel, from controller: UIViewController)
 }
 
@@ -56,6 +56,10 @@ class VehiclesViewModel: VehiclesViewModelProtocol {
     }
 
     func changeApiKey(from controller: UIViewController) {
-        delegate?.didSelectApiKey(from: controller)
+        delegate?.didSelectApiKey(from: controller) { [weak self] success in
+            if success {
+                self?.refresh(from: controller)
+            }
+        }
     }
 }

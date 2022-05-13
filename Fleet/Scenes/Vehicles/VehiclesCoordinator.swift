@@ -39,12 +39,12 @@ extension VehiclesCoordinator: VehiclesViewModelCoordinatorDelegate {
         // TODO: create next scene
     }
 
-    func didSelectApiKey(from controller: UIViewController) {
+    func didSelectApiKey(from controller: UIViewController, completion: @escaping (_ hasApiChanged: Bool) -> Void) {
         let store = LocalDataStore()
         let service = ApiKeyService(store: store)
         let viewModel = ApiKeyViewModel(service: service)
         let apiKeyController = ApiKeyController(viewModel: viewModel)
-        apiKeyController.present(from: controller)
+        apiKeyController.present(from: controller, completion: completion)
     }
 
     func show(alert: AlertModel, from controller: UIViewController) {
