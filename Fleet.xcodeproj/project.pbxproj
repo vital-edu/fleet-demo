@@ -42,6 +42,7 @@
 		E8AB9BEC282DCBB400A400CB /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BEB282DCBB400A400CB /* Either.swift */; };
 		E8AB9BEF282DEC2000A400CB /* Date+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BEE282DEC2000A400CB /* Date+Formatter.swift */; };
 		E8AB9BF1282DF14500A400CB /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BF0282DF14500A400CB /* DateUtils.swift */; };
+		E8ADDC05282E040900294E59 /* ApiKeyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ADDC04282E040900294E59 /* ApiKeyCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		E8AB9BEB282DCBB400A400CB /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
 		E8AB9BEE282DEC2000A400CB /* Date+Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatter.swift"; sourceTree = "<group>"; };
 		E8AB9BF0282DF14500A400CB /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		E8ADDC04282E040900294E59 /* ApiKeyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 				E88E5EEA2829DAD3002CB004 /* ApiKeyViewModel.swift */,
 				E88E5EEC2829DBF2002CB004 /* ApiKeyService.swift */,
 				E861C556282B54FD001CD326 /* ApiKeyViewController.swift */,
+				E8ADDC04282E040900294E59 /* ApiKeyCoordinator.swift */,
 			);
 			path = "Api Key";
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 			files = (
 				E88E5EDF2828B7D0002CB004 /* ApiClient.swift in Sources */,
 				E8AB9BE1282D173F00A400CB /* ApiRequestInterceptor.swift in Sources */,
+				E8ADDC05282E040900294E59 /* ApiKeyCoordinator.swift in Sources */,
 				E8AB9BDC282D10D900A400CB /* UserDefaultsKey.swift in Sources */,
 				E8AB9BE8282DB83400A400CB /* BodyResponse.swift in Sources */,
 				E861C557282B54FD001CD326 /* ApiKeyViewController.swift in Sources */,

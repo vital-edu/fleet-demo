@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class AppCoordinator: Coordinator {
-    let window: UIWindow?
+    weak var window: UIWindow?
 
     lazy var rootViewController: UINavigationController = {
         return UINavigationController(rootViewController: UIViewController())

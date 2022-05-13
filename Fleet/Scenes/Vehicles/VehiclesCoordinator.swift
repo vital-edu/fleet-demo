@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class VehiclesCoordinator: Coordinator {
-    let rootViewController: UINavigationController
+    weak var rootViewController: UINavigationController?
     let apiClient: ApiClient
 
     init(rootViewController: UINavigationController, apiClient: ApiClient) {
@@ -26,7 +26,7 @@ class VehiclesCoordinator: Coordinator {
         let viewModel = VehiclesViewModel(service: service)
         viewModel.delegate = self
         viewController.viewModel = viewModel
-        rootViewController.setViewControllers([viewController], animated: false)
+        rootViewController?.setViewControllers([viewController], animated: false)
     }
 
     override func finish() {
@@ -40,11 +40,10 @@ extension VehiclesCoordinator: VehiclesViewModelCoordinatorDelegate {
     }
 
     func didSelectApiKey(from controller: UIViewController, completion: @escaping (_ hasApiChanged: Bool) -> Void) {
-        let store = LocalDataStore()
-        let service = ApiKeyService(store: store)
-        let viewModel = ApiKeyViewModel(service: service)
-        let apiKeyController = ApiKeyController(viewModel: viewModel)
-        apiKeyController.present(from: controller, completion: completion)
+        guard let rootViewController = rootViewController else { return }
+        let coordinator = ApiKeyCoordinator(rootViewController: rootViewController, delegate: self, completion: completion)
+        addChild(coordinator)
+        coordinator.start()
     }
 
     func show(alert: AlertModel, from controller: UIViewController) {
@@ -58,5 +57,11 @@ extension VehiclesCoordinator: VehiclesViewModelCoordinatorDelegate {
             alertController.addAction(secondaryAction)
         }
         controller.present(alertController, animated: true)
+    }
+}
+
+extension VehiclesCoordinator: ApiKeyCoordinatorDelegate {
+    func didFinish(from coordinator: ApiKeyCoordinator) {
+        removeChild(coordinator)
     }
 }

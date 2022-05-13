@@ -8,39 +8,33 @@
 import UIKit
 
 class ApiKeyController {
-    var viewModel: ApiKeyViewModelProtocol
-
-    required init(viewModel: ApiKeyViewModelProtocol) {
-        self.viewModel = viewModel
-    }
-
-    func present(from viewController: UIViewController, completion: @escaping (_ hasApiChanged: Bool) -> Void) {
+    class func createAlert(viewModel: ApiKeyViewModelProtocol, completion: @escaping (_ hasApiChanged: Bool) -> Void) -> UIAlertController {
         let alertView = UIAlertController(
             title: viewModel.title,
             message: nil,
             preferredStyle: .alert
         )
-        let primaryAction = UIAlertAction(title: viewModel.primaryButtonText, style: .default) { [weak self] action in
-            guard let self = self, let apiKey = alertView.textFields?.first?.text else {
+        let primaryAction = UIAlertAction(title: viewModel.primaryButtonText, style: .default) { [weak alertView] action in
+            guard let alertView = alertView, let apiKey = alertView.textFields?.first?.text else {
+                completion(false)
                 return
             }
-            self.viewModel.saveApiKey(apiKey)
+            viewModel.saveApiKey(apiKey)
             completion(true)
         }
-        let secondaryAction = UIAlertAction(title: viewModel.secondaryButtonText, style: .cancel)
+        let secondaryAction = UIAlertAction(title: viewModel.secondaryButtonText, style: .cancel) { [weak alertView] action in
+            completion(false)
+        }
 
-        alertView.addTextField { [weak self] textField in
-            guard let self = self else { return }
-            self.viewModel.apiKey.bindAndFire { [weak textField] apiKey in
-                textField?.text = self.viewModel.apiKey.value
-            }
-            textField.placeholder = self.viewModel.fieldPlaceholder
+        alertView.addTextField { textField in
+            textField.text = viewModel.apiKey.value
+            textField.placeholder = viewModel.fieldPlaceholder
             textField.clearButtonMode = .whileEditing
         }
 
         alertView.addAction(primaryAction)
         alertView.addAction(secondaryAction)
 
-        viewController.present(alertView, animated: true)
+        return alertView
     }
 }

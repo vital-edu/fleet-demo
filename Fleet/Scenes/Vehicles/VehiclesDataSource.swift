@@ -37,7 +37,7 @@ class VehiclesLocalDataSource: VehiclesDataSource {
 }
 
 class VehiclesRemoteDataSource: VehiclesDataSource {
-    let apiClient: ApiClient
+    weak var apiClient: ApiClient?
 
     init(apiClient: ApiClient) {
         self.apiClient = apiClient
@@ -52,6 +52,8 @@ class VehiclesRemoteDataSource: VehiclesDataSource {
     }
 
     func getAll(completion: @escaping (Swift.Result<[Vehicle], Error>) -> Void) {
+        guard let apiClient = apiClient else { return }
+
         var url = apiClient.baseUrl
         url?.path.append(Endpoint.vehicles.value)
 
