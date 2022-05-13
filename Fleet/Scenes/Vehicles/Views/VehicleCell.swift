@@ -21,22 +21,28 @@ class VehicleCell: UITableViewCell, ViewConfiguration {
     private var leftTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: UIFont.systemFontSize)
+        label.setContentHuggingPriority(.defaultLow, for: .horizontal)
         return label
     }()
 
     private var leftSubtitleLabel: UILabel = {
         let label = UILabel()
+        label.setContentHuggingPriority(.defaultLow, for: .horizontal)
         return label
     }()
 
     private var rightTitleLabel: UILabel = {
         let label = UILabel()
+        label.textAlignment = .right
+        label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         label.font = UIFont.boldSystemFont(ofSize: UIFont.systemFontSize)
         return label
     }()
 
     private var rightSubtitleLabel: UILabel = {
         let label = UILabel()
+        label.textAlignment = .right
+        label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         return label
     }()
 
@@ -44,7 +50,7 @@ class VehicleCell: UITableViewCell, ViewConfiguration {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fill
-        stackView.alignment = .top
+        stackView.alignment = .fill
         stackView.addArrangedSubview(leftTitleLabel)
         stackView.addArrangedSubview(rightTitleLabel)
         return stackView
@@ -54,7 +60,7 @@ class VehicleCell: UITableViewCell, ViewConfiguration {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fill
-        stackView.alignment = .top
+        stackView.alignment = .fill
         stackView.addArrangedSubview(leftSubtitleLabel)
         stackView.addArrangedSubview(rightSubtitleLabel)
         return stackView

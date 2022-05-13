@@ -40,6 +40,8 @@
 		E8AB9BE8282DB83400A400CB /* BodyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BE7282DB83400A400CB /* BodyResponse.swift */; };
 		E8AB9BEA282DCB3100A400CB /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BE9282DCB3100A400CB /* AlertModel.swift */; };
 		E8AB9BEC282DCBB400A400CB /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BEB282DCBB400A400CB /* Either.swift */; };
+		E8AB9BEF282DEC2000A400CB /* Date+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BEE282DEC2000A400CB /* Date+Formatter.swift */; };
+		E8AB9BF1282DF14500A400CB /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BF0282DF14500A400CB /* DateUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +91,8 @@
 		E8AB9BE7282DB83400A400CB /* BodyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyResponse.swift; sourceTree = "<group>"; };
 		E8AB9BE9282DCB3100A400CB /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
 		E8AB9BEB282DCBB400A400CB /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
+		E8AB9BEE282DEC2000A400CB /* Date+Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatter.swift"; sourceTree = "<group>"; };
+		E8AB9BF0282DF14500A400CB /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,12 +191,14 @@
 			isa = PBXGroup;
 			children = (
 				E88E5EE82828BF14002CB004 /* LocalDataStore.swift */,
+				E8AB9BED282DEC0E00A400CB /* Extensions */,
 				E88E5EDB2828B521002CB004 /* Network */,
 				E88E5EF32829EA3B002CB004 /* Dynamic.swift */,
 				E88E5EF52829EE60002CB004 /* ViewConfiguration.swift */,
 				E8AB9BE9282DCB3100A400CB /* AlertModel.swift */,
 				E8AB9BDB282D10D900A400CB /* UserDefaultsKey.swift */,
 				E8AB9BEB282DCBB400A400CB /* Either.swift */,
+				E8AB9BF0282DF14500A400CB /* DateUtils.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -286,6 +292,14 @@
 				E8AB9BE5282D3B8800A400CB /* ApiRequestInterceptorTests.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		E8AB9BED282DEC0E00A400CB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E8AB9BEE282DEC2000A400CB /* Date+Formatter.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,11 +428,13 @@
 				E84AE614282A70AB0020CC1B /* VehiclesViewModel.swift in Sources */,
 				E88E5EED2829DBF2002CB004 /* ApiKeyService.swift in Sources */,
 				E88E5ECD28288D14002CB004 /* AppCoordinator.swift in Sources */,
+				E8AB9BF1282DF14500A400CB /* DateUtils.swift in Sources */,
 				E88E5ECF28288D1E002CB004 /* Coordinator.swift in Sources */,
 				E88E5EF92829EEAC002CB004 /* VehicleCell.swift in Sources */,
 				E88E5EB428287EE3002CB004 /* AppDelegate.swift in Sources */,
 				E8AB9BDA282D0EF500A400CB /* VehiclesDataSource.swift in Sources */,
 				E88E5EB628287EE3002CB004 /* SceneDelegate.swift in Sources */,
+				E8AB9BEF282DEC2000A400CB /* Date+Formatter.swift in Sources */,
 				E88E5EF02829E978002CB004 /* VehiclesCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

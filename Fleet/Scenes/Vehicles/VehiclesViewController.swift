@@ -17,6 +17,7 @@ class VehiclesViewController: UITableViewController {
         setupNavigationBar()
         setupTableView()
         setupUI()
+        viewModel?.refresh(from: self)
     }
 
     private func setupNavigationBar() {

@@ -13,7 +13,7 @@ struct Vehicle: Codable {
     let timestamp: String
     let latitude: Double
     let longitude: Double
-    let speed: Int
+    let speed: Int?
     let enginestate: Int
     let gpsstate: Bool
     let direction: Int?
@@ -53,7 +53,7 @@ struct Vehicle: Codable {
     let objectName: String
     let externalId: String?
     let plate: String
-    let CANRPM: String?
+    let CANRPM: Int?
     let GreenDrivingValue: Double?
     let GreenDrivingType: Int?
 }
@@ -65,10 +65,13 @@ struct VehicleViewData {
     let rightSubtitle: String
 
     init(model: Vehicle) {
-        self.leftTitle = "\(model.plate) / \(model.driverName)"
-        self.rightTitle = "\(model.speed) / km/h"
+        let driverName = model.driverName ?? "Unknown driver"
+        self.leftTitle = "\(model.plate) / \(driverName)"
+
+        self.rightTitle = model.speed == nil ? "-" : "\(model.speed!) km/h"
         self.leftSubtitle = model.address
-        // TODO: format lastEngineOnTime
-        self.rightSubtitle = "\(model.lastEngineOnTime)"
+
+        let date = DateUtils.formatter.date(from: model.lastEngineOnTime.appending("+0300"))
+        self.rightSubtitle = date == nil ? "Unknown" : date!.timeAgoDisplay()
     }
 }
