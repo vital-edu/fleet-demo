@@ -40,7 +40,7 @@ class VehiclesViewModel: VehiclesViewModelProtocol {
     }
 
     func didSelect(row: Int, from controller: UIViewController) {
-        print("selected vehicle \(items.value[row].leftTitle)")
+        delegate?.didSelect(vehicle: items.value[row], from: controller)
     }
 
     func refresh(from controller: UIViewController) {

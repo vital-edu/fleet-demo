@@ -36,7 +36,10 @@ class VehiclesCoordinator: Coordinator {
 
 extension VehiclesCoordinator: VehiclesViewModelCoordinatorDelegate {
     func didSelect(vehicle: VehicleViewData, from controller: UIViewController) {
-        // TODO: create next scene
+        guard let rootViewController = rootViewController else { return }
+        let coordinator = ShowVehicleCoordinator(rootViewController: rootViewController)
+        addChild(coordinator)
+        coordinator.start()
     }
 
     func didSelectApiKey(from controller: UIViewController, completion: @escaping (_ hasApiChanged: Bool) -> Void) {

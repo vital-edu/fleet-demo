@@ -22,7 +22,7 @@ class ApiKeyController {
             viewModel.saveApiKey(apiKey)
             completion(true)
         }
-        let secondaryAction = UIAlertAction(title: viewModel.secondaryButtonText, style: .cancel) { [weak alertView] action in
+        let secondaryAction = UIAlertAction(title: viewModel.secondaryButtonText, style: .cancel) { action in
             completion(false)
         }
 
