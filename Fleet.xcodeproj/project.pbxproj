@@ -11,6 +11,8 @@
 		DAF4C02C08D573DAD0E54073 /* Pods_Fleet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E598473EE48E061C5BE3101 /* Pods_Fleet.framework */; };
 		E84AE614282A70AB0020CC1B /* VehiclesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84AE613282A70AB0020CC1B /* VehiclesViewModel.swift */; };
 		E861C557282B54FD001CD326 /* ApiKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E861C556282B54FD001CD326 /* ApiKeyViewController.swift */; };
+		E87CAAEC282F21750009A8D0 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = E87CAAEB282F21750009A8D0 /* Secrets.plist */; };
+		E87CAAEE282F21F90009A8D0 /* SecretsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87CAAED282F21F90009A8D0 /* SecretsManager.swift */; };
 		E88E5EB428287EE3002CB004 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EB328287EE3002CB004 /* AppDelegate.swift */; };
 		E88E5EB628287EE3002CB004 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88E5EB528287EE3002CB004 /* SceneDelegate.swift */; };
 		E88E5EBD28287EE4002CB004 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E88E5EBC28287EE4002CB004 /* Assets.xcassets */; };
@@ -68,6 +70,8 @@
 		B6FB31E028C93096EA915265 /* Pods-FleetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FleetTests.release.xcconfig"; path = "Target Support Files/Pods-FleetTests/Pods-FleetTests.release.xcconfig"; sourceTree = "<group>"; };
 		E84AE613282A70AB0020CC1B /* VehiclesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesViewModel.swift; sourceTree = "<group>"; };
 		E861C556282B54FD001CD326 /* ApiKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyViewController.swift; sourceTree = "<group>"; };
+		E87CAAEB282F21750009A8D0 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
+		E87CAAED282F21F90009A8D0 /* SecretsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsManager.swift; sourceTree = "<group>"; };
 		E88E5EB028287EE3002CB004 /* Fleet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fleet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E88E5EB328287EE3002CB004 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E88E5EB528287EE3002CB004 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 			children = (
 				E88E5EBC28287EE4002CB004 /* Assets.xcassets */,
 				E88E5EC128287EE4002CB004 /* Info.plist */,
+				E87CAAEB282F21750009A8D0 /* Secrets.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -268,6 +273,7 @@
 				E88E5EEC2829DBF2002CB004 /* ApiKeyService.swift */,
 				E861C556282B54FD001CD326 /* ApiKeyViewController.swift */,
 				E8ADDC04282E040900294E59 /* ApiKeyCoordinator.swift */,
+				E87CAAED282F21F90009A8D0 /* SecretsManager.swift */,
 			);
 			path = "Api Key";
 			sourceTree = "<group>";
@@ -373,6 +379,7 @@
 				E88E5EAD28287EE3002CB004 /* Frameworks */,
 				E88E5EAE28287EE3002CB004 /* Resources */,
 				8E043EDB8C603B8B0896D486 /* [CP] Copy Pods Resources */,
+				E87CAAEF282F23560009A8D0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -452,6 +459,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E87CAAEC282F21750009A8D0 /* Secrets.plist in Resources */,
 				E88E5EC028287EE4002CB004 /* LaunchScreen.storyboard in Resources */,
 				E88E5EBD28287EE4002CB004 /* Assets.xcassets in Resources */,
 			);
@@ -528,6 +536,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E87CAAEF282F23560009A8D0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "CONFIG_FILE_BASE_NAME=\"SECRETS\"\n\nCONFIG_FILE_NAME=${CONFIG_FILE_BASE_NAME}.plist\nCONFIG_FILE_PATH=$SRCROOT/$PRODUCT_NAME/Supporting\\ Files/$CONFIG_FILE_NAME\n\nif [ -f \"$CONFIG_FILE_PATH\" ]; then\n  echo \"$CONFIG_FILE_PATH exists.\"\nelse\n  echo \"$CONFIG_FILE_PATH does not exist. Read the README.md.\"\n  cp -v \"${SAMPLE_CONFIG_FILE_PATH}\" \"${CONFIG_FILE_PATH}\"\nfi\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -544,6 +569,7 @@
 				E861C557282B54FD001CD326 /* ApiKeyViewController.swift in Sources */,
 				E88E5EEB2829DAD3002CB004 /* ApiKeyViewModel.swift in Sources */,
 				E88E5EE92828BF14002CB004 /* LocalDataStore.swift in Sources */,
+				E87CAAEE282F21F90009A8D0 /* SecretsManager.swift in Sources */,
 				E88E5EF62829EE60002CB004 /* ViewConfiguration.swift in Sources */,
 				E8AB9BD8282D0DA400A400CB /* VehiclesService.swift in Sources */,
 				E88E5EF42829EA3B002CB004 /* Dynamic.swift in Sources */,
