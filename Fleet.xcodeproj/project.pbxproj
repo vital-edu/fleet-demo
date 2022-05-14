@@ -10,6 +10,7 @@
 		8DCE126C4631DD6CB2617BCA /* Pods_FleetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9CA4CCC5B252CB737919D38 /* Pods_FleetTests.framework */; };
 		DAF4C02C08D573DAD0E54073 /* Pods_Fleet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E598473EE48E061C5BE3101 /* Pods_Fleet.framework */; };
 		E84AE614282A70AB0020CC1B /* VehiclesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84AE613282A70AB0020CC1B /* VehiclesViewModel.swift */; };
+		E84F7199282F2BEB00C1BBDD /* VehiclePosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84F7198282F2BEB00C1BBDD /* VehiclePosition.swift */; };
 		E861C557282B54FD001CD326 /* ApiKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E861C556282B54FD001CD326 /* ApiKeyViewController.swift */; };
 		E87CAAEC282F21750009A8D0 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = E87CAAEB282F21750009A8D0 /* Secrets.plist */; };
 		E87CAAEE282F21F90009A8D0 /* SecretsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87CAAED282F21F90009A8D0 /* SecretsManager.swift */; };
@@ -69,6 +70,7 @@
 		8334484CDC9A8A389730122C /* Pods-FleetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FleetTests.debug.xcconfig"; path = "Target Support Files/Pods-FleetTests/Pods-FleetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B6FB31E028C93096EA915265 /* Pods-FleetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FleetTests.release.xcconfig"; path = "Target Support Files/Pods-FleetTests/Pods-FleetTests.release.xcconfig"; sourceTree = "<group>"; };
 		E84AE613282A70AB0020CC1B /* VehiclesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesViewModel.swift; sourceTree = "<group>"; };
+		E84F7198282F2BEB00C1BBDD /* VehiclePosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclePosition.swift; sourceTree = "<group>"; };
 		E861C556282B54FD001CD326 /* ApiKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyViewController.swift; sourceTree = "<group>"; };
 		E87CAAEB282F21750009A8D0 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		E87CAAED282F21F90009A8D0 /* SecretsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsManager.swift; sourceTree = "<group>"; };
@@ -148,7 +150,6 @@
 				8334484CDC9A8A389730122C /* Pods-FleetTests.debug.xcconfig */,
 				B6FB31E028C93096EA915265 /* Pods-FleetTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -359,10 +360,11 @@
 			isa = PBXGroup;
 			children = (
 				E8AB9BF3282DF7E400A400CB /* ShowVehicleCoordinator.swift */,
-				E8AB9BF5282DF80A00A400CB /* ShowVehicleViewModel.swift */,
 				E8AB9BF7282DF82600A400CB /* ShowVehicleService.swift */,
 				E8AB9BF9282DF83600A400CB /* ShowVehicleDataSource.swift */,
+				E8AB9BF5282DF80A00A400CB /* ShowVehicleViewModel.swift */,
 				E8AB9BFB282DF8BA00A400CB /* ShowVehicleViewController.swift */,
+				E84F7198282F2BEB00C1BBDD /* VehiclePosition.swift */,
 			);
 			path = ShowVehicle;
 			sourceTree = "<group>";
@@ -374,12 +376,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E88E5EC428287EE4002CB004 /* Build configuration list for PBXNativeTarget "Fleet" */;
 			buildPhases = (
+				E87CAAEF282F23560009A8D0 /* ShellScript */,
 				D6DBF140246D79BE2D8D1C74 /* [CP] Check Pods Manifest.lock */,
 				E88E5EAC28287EE3002CB004 /* Sources */,
 				E88E5EAD28287EE3002CB004 /* Frameworks */,
 				E88E5EAE28287EE3002CB004 /* Resources */,
 				8E043EDB8C603B8B0896D486 /* [CP] Copy Pods Resources */,
-				E87CAAEF282F23560009A8D0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -442,7 +444,7 @@
 			);
 			mainGroup = E88E5EA728287EE3002CB004;
 			packageReferences = (
-				E8AB9BDD282D157000A400CB /* XCRemoteSwiftPackageReference "Alamofire.git" */,
+				E8AB9BDD282D157000A400CB /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = E88E5EB128287EE3002CB004 /* Products */;
 			projectDirPath = "";
@@ -551,7 +553,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "CONFIG_FILE_BASE_NAME=\"SECRETS\"\n\nCONFIG_FILE_NAME=${CONFIG_FILE_BASE_NAME}.plist\nCONFIG_FILE_PATH=$SRCROOT/$PRODUCT_NAME/Supporting\\ Files/$CONFIG_FILE_NAME\n\nif [ -f \"$CONFIG_FILE_PATH\" ]; then\n  echo \"$CONFIG_FILE_PATH exists.\"\nelse\n  echo \"$CONFIG_FILE_PATH does not exist. Read the README.md.\"\n  cp -v \"${SAMPLE_CONFIG_FILE_PATH}\" \"${CONFIG_FILE_PATH}\"\nfi\n";
+			shellScript = "CONFIG_FILE_BASE_NAME=\"Secrets\"\n\nCONFIG_FILE_NAME=${CONFIG_FILE_BASE_NAME}.plist\nSAMPLE_CONFIG_FILE_NAME=${CONFIG_FILE_BASE_NAME}\\ Sample.plist\n\nCONFIG_FILE_PATH=$SRCROOT/$PRODUCT_NAME/Supporting\\ Files/$CONFIG_FILE_NAME\nSAMPLE_CONFIG_FILE_PATH=$SRCROOT/$PRODUCT_NAME/Supporting\\ Files/$SAMPLE_CONFIG_FILE_NAME\n\nif [ -f \"$CONFIG_FILE_PATH\" ]; then\n  echo \"$CONFIG_FILE_PATH exists.\"\nelse\n  echo \"$CONFIG_FILE_PATH does not exist, copying sample\"\n  cp -v \"${SAMPLE_CONFIG_FILE_PATH}\" \"${CONFIG_FILE_PATH}\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -569,6 +571,7 @@
 				E861C557282B54FD001CD326 /* ApiKeyViewController.swift in Sources */,
 				E88E5EEB2829DAD3002CB004 /* ApiKeyViewModel.swift in Sources */,
 				E88E5EE92828BF14002CB004 /* LocalDataStore.swift in Sources */,
+				E84F7199282F2BEB00C1BBDD /* VehiclePosition.swift in Sources */,
 				E87CAAEE282F21F90009A8D0 /* SecretsManager.swift in Sources */,
 				E88E5EF62829EE60002CB004 /* ViewConfiguration.swift in Sources */,
 				E8AB9BD8282D0DA400A400CB /* VehiclesService.swift in Sources */,
@@ -889,7 +892,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E8AB9BDD282D157000A400CB /* XCRemoteSwiftPackageReference "Alamofire.git" */ = {
+		E8AB9BDD282D157000A400CB /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -902,7 +905,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		E8AB9BDE282D157000A400CB /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E8AB9BDD282D157000A400CB /* XCRemoteSwiftPackageReference "Alamofire.git" */;
+			package = E8AB9BDD282D157000A400CB /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol VehiclesViewModelCoordinatorDelegate: AnyObject {
-    func didSelect(vehicle: VehicleViewData, from controller: UIViewController)
+    func didSelect(vehicle: Vehicle, from controller: UIViewController)
     func didSelectApiKey(from controller: UIViewController, completion: @escaping (_ hasApiChanged: Bool) -> Void)
     func show(alert: AlertModel, from controller: UIViewController)
 }
@@ -35,12 +35,18 @@ class VehiclesViewModel: VehiclesViewModelProtocol {
     var items: Dynamic<[VehicleViewData]> = Dynamic([])
     let service: VehiclesServiceProtocol
 
+    private var vehicles: [Vehicle] = [] {
+        didSet {
+            items.value = vehicles.map { VehicleViewData(model: $0) }
+        }
+    }
+
     init(service: VehiclesServiceProtocol) {
         self.service = service
     }
 
     func didSelect(row: Int, from controller: UIViewController) {
-        delegate?.didSelect(vehicle: items.value[row], from: controller)
+        delegate?.didSelect(vehicle: vehicles[row], from: controller)
     }
 
     func refresh(from controller: UIViewController) {
@@ -48,7 +54,7 @@ class VehiclesViewModel: VehiclesViewModelProtocol {
             guard let self = self else { return }
             switch result {
             case .success(let vehicles):
-                self.items.value = vehicles.map { VehicleViewData(model: $0) }
+                self.vehicles = vehicles
             case .failure(let alert):
                 self.delegate?.show(alert: alert, from: controller)
             }

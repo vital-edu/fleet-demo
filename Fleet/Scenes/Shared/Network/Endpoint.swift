@@ -7,13 +7,16 @@
 
 import Foundation
 
-enum Endpoint: String {
-    case vehicles = "Vehicles"
+enum Endpoint {
+    case vehicles
+    case vehiclePositions
 
     var value: String {
         switch self {
         case .vehicles:
             return "/getLastData"
+        case .vehiclePositions:
+            return "/getRawData"
         }
     }
 }

@@ -59,12 +59,15 @@ struct Vehicle: Codable {
 }
 
 struct VehicleViewData {
+    let objectId: String
     let leftTitle: String
     let rightTitle: String
     let leftSubtitle: String
     let rightSubtitle: String
 
     init(model: Vehicle) {
+        self.objectId = "\(model.objectId)"
+
         let driverName = model.driverName ?? "Unknown driver"
         self.leftTitle = "\(model.plate) / \(driverName)"
 

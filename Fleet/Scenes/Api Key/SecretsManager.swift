@@ -9,7 +9,7 @@ import Foundation
 
 class SecretsManager {
     static private(set) var googleMapsKey: String = {
-        let fileName = "Secrets-Info"
+        let fileName = "Secrets"
         let fileExtension = "plist"
         let file = "\(fileName)/\(fileExtension)"
         let keyName = "GOOGLE_MAPS_KEY"
@@ -23,7 +23,7 @@ class SecretsManager {
             fatalError("Couldn't find key '\(keyName)' in '\(file)'.")
         }
 
-        if (value.starts(with: "_")) {
+        if (value.isEmpty) {
             fatalError("Use your Google Maps Key in \(file).")
         }
 

@@ -35,9 +35,9 @@ class VehiclesCoordinator: Coordinator {
 }
 
 extension VehiclesCoordinator: VehiclesViewModelCoordinatorDelegate {
-    func didSelect(vehicle: VehicleViewData, from controller: UIViewController) {
+    func didSelect(vehicle: Vehicle, from controller: UIViewController) {
         guard let rootViewController = rootViewController else { return }
-        let coordinator = ShowVehicleCoordinator(rootViewController: rootViewController)
+        let coordinator = ShowVehicleCoordinator(vehicle: vehicle, rootViewController: rootViewController, apiClient: apiClient)
         addChild(coordinator)
         coordinator.start()
     }
