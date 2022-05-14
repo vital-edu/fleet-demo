@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ShowVehicleDataSource: AnyObject {
-    func getPositionFor(vehicleId: String, completion: @escaping (Result<[VehiclePosition], Error>) -> Void)
+    func getPositionsOf(vehicleId: String, at date: Date, completion: @escaping (Result<[VehiclePosition], Error>) -> Void)
 }
 
 class ShowVehicleRemoteDataSource: ShowVehicleDataSource {
@@ -18,7 +18,7 @@ class ShowVehicleRemoteDataSource: ShowVehicleDataSource {
         self.apiClient = apiClient
     }
 
-    func getPositionFor(vehicleId: String, completion: @escaping (Result<[VehiclePosition], Error>) -> Void) {
+    func getPositionsOf(vehicleId: String, at date: Date, completion: @escaping (Result<[VehiclePosition], Error>) -> Void) {
         guard let apiClient = apiClient else { return }
 
         var url = apiClient.baseUrl
@@ -28,9 +28,13 @@ class ShowVehicleRemoteDataSource: ShowVehicleDataSource {
             return completion(.failure(NetworkError.blankUrl))
         }
 
+        let begTimestamp = DateUtils.yearMonthDayFormatter.string(from: date)
+        let endTimestamp = DateUtils.yearMonthDayFormatter.string(
+            from: Calendar.current.date(byAdding: .day, value: 1, to: date) ?? Date()
+        )
         let parameters = [
-            "begTimestamp": "2020-10-30",
-            "endTimestamp": "2020-12-01",
+            "begTimestamp": begTimestamp,
+            "endTimestamp": endTimestamp,
             "objectId": vehicleId,
         ]
         apiClient.session.request(url, method: .get, parameters: parameters).responseDecodable(of: BodyResponse<[VehiclePosition]>.self) { response in

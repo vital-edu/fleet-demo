@@ -54,6 +54,8 @@
 		E8AB9BFA282DF83600A400CB /* ShowVehicleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BF9282DF83600A400CB /* ShowVehicleDataSource.swift */; };
 		E8AB9BFC282DF8BA00A400CB /* ShowVehicleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AB9BFB282DF8BA00A400CB /* ShowVehicleViewController.swift */; };
 		E8ADDC05282E040900294E59 /* ApiKeyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8ADDC04282E040900294E59 /* ApiKeyCoordinator.swift */; };
+		E8D2606C2830109B0026273C /* SearchOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D2606B2830109B0026273C /* SearchOptionsView.swift */; };
+		E8D260702830280A0026273C /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D2606F2830280A0026273C /* DatePickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +120,8 @@
 		E8AB9BF9282DF83600A400CB /* ShowVehicleDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowVehicleDataSource.swift; sourceTree = "<group>"; };
 		E8AB9BFB282DF8BA00A400CB /* ShowVehicleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowVehicleViewController.swift; sourceTree = "<group>"; };
 		E8ADDC04282E040900294E59 /* ApiKeyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyCoordinator.swift; sourceTree = "<group>"; };
+		E8D2606B2830109B0026273C /* SearchOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchOptionsView.swift; sourceTree = "<group>"; };
+		E8D2606F2830280A0026273C /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		EAE9DE11A802E3C8200E5689 /* Pods-Fleet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fleet.release.xcconfig"; path = "Target Support Files/Pods-Fleet/Pods-Fleet.release.xcconfig"; sourceTree = "<group>"; };
 		EB6A70C9693D8608746AFEA9 /* Pods-Fleet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fleet.debug.xcconfig"; path = "Target Support Files/Pods-Fleet/Pods-Fleet.debug.xcconfig"; sourceTree = "<group>"; };
 		F9CA4CCC5B252CB737919D38 /* Pods_FleetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FleetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -244,6 +248,7 @@
 		E88E5EDA2828B4F8002CB004 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E8D2606E283027FA0026273C /* Views */,
 				E88E5EE82828BF14002CB004 /* LocalDataStore.swift */,
 				E8AB9BED282DEC0E00A400CB /* Extensions */,
 				E88E5EDB2828B521002CB004 /* Network */,
@@ -362,6 +367,7 @@
 		E8AB9BF2282DF7B900A400CB /* ShowVehicle */ = {
 			isa = PBXGroup;
 			children = (
+				E8D2606A2830104C0026273C /* Views */,
 				E8AB9BF3282DF7E400A400CB /* ShowVehicleCoordinator.swift */,
 				E8AB9BF7282DF82600A400CB /* ShowVehicleService.swift */,
 				E8AB9BF9282DF83600A400CB /* ShowVehicleDataSource.swift */,
@@ -370,6 +376,22 @@
 				E84F7198282F2BEB00C1BBDD /* VehiclePosition.swift */,
 			);
 			path = ShowVehicle;
+			sourceTree = "<group>";
+		};
+		E8D2606A2830104C0026273C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E8D2606B2830109B0026273C /* SearchOptionsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E8D2606E283027FA0026273C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E8D2606F2830280A0026273C /* DatePickerViewController.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -585,6 +607,7 @@
 				E88E5ED92828ADD2002CB004 /* Vehicle.swift in Sources */,
 				E8AB9BEA282DCB3100A400CB /* AlertModel.swift in Sources */,
 				E8AB9BEC282DCBB400A400CB /* Either.swift in Sources */,
+				E8D2606C2830109B0026273C /* SearchOptionsView.swift in Sources */,
 				E88E5EE42828B8D9002CB004 /* Endpoint.swift in Sources */,
 				E84AE614282A70AB0020CC1B /* VehiclesViewModel.swift in Sources */,
 				E88E5EED2829DBF2002CB004 /* ApiKeyService.swift in Sources */,
@@ -599,6 +622,7 @@
 				E88E5EB428287EE3002CB004 /* AppDelegate.swift in Sources */,
 				E8AB9BDA282D0EF500A400CB /* VehiclesDataSource.swift in Sources */,
 				E88E5EB628287EE3002CB004 /* SceneDelegate.swift in Sources */,
+				E8D260702830280A0026273C /* DatePickerViewController.swift in Sources */,
 				E8AB9BEF282DEC2000A400CB /* Date+Formatter.swift in Sources */,
 				E88E5EF02829E978002CB004 /* VehiclesCoordinator.swift in Sources */,
 			);

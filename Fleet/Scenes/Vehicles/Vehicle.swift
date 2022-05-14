@@ -74,7 +74,7 @@ struct VehicleViewData {
         self.rightTitle = model.speed == nil ? "-" : "\(model.speed!) km/h"
         self.leftSubtitle = model.address
 
-        let date = DateUtils.formatter.date(from: model.lastEngineOnTime.appending("+0300"))
+        let date = DateUtils.fullDateTimeFormatter.date(from: model.lastEngineOnTime.appending("+0300"))
         self.rightSubtitle = date == nil ? "Unknown" : date!.timeAgoDisplay()
     }
 }

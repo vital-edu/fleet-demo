@@ -13,6 +13,7 @@ class ShowVehicleViewController: UIViewController, ViewConfiguration {
 
     private struct ViewMetrics {
         static let bottomPadding = 16.0
+        static let searchBarTopPadding = 8.0
     }
 
     private var bottomTitleLabel: UILabel = {
@@ -20,6 +21,15 @@ class ShowVehicleViewController: UIViewController, ViewConfiguration {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: UIFont.systemFontSize)
         return label
+    }()
+
+    private lazy var searchOptionsView: SearchOptionsView = {
+        let view = SearchOptionsView { [weak self] date in
+            guard let self = self else { return }
+            self.viewModel?.fetchVehiclePositions(at: date, viewController: self)
+        }
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
 
     override func viewDidLoad() {
@@ -33,7 +43,7 @@ class ShowVehicleViewController: UIViewController, ViewConfiguration {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        viewModel?.refresh(from: self)
+        viewModel?.fetchVehiclePositions(at: searchOptionsView.date, viewController: self)
     }
 
     func configureViews() {
@@ -43,12 +53,23 @@ class ShowVehicleViewController: UIViewController, ViewConfiguration {
 
     func buildViewHierarchy() {
         view.addSubview(bottomTitleLabel)
+        view.addSubview(searchOptionsView)
     }
 
     func setupConstraints() {
         NSLayoutConstraint.activate([
             bottomTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            bottomTitleLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -ViewMetrics.bottomPadding)
+            bottomTitleLabel.bottomAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+                constant: -ViewMetrics.bottomPadding
+            ),
+
+            searchOptionsView.topAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.topAnchor,
+                constant: ViewMetrics.searchBarTopPadding
+            ),
+            searchOptionsView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            searchOptionsView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
 
@@ -59,7 +80,6 @@ class ShowVehicleViewController: UIViewController, ViewConfiguration {
         viewModel.bottomTitle.bindAndFire { [weak self] text in
             guard let self = self else { return }
             self.bottomTitleLabel.text = text
-            self.view.bringSubviewToFront(self.bottomTitleLabel)
         }
 
         viewModel.positions.bindAndFire { [weak self] positions in
@@ -130,6 +150,8 @@ class ShowVehicleViewController: UIViewController, ViewConfiguration {
             let bounds = GMSCoordinateBounds(coordinate: startPosition, coordinate: endPosition)
             let update = GMSCameraUpdate.fit(bounds, withPadding: 50.0)
             mapView.moveCamera(update)
+
+            self.view.sendSubviewToBack(mapView)
         }
     }
 }

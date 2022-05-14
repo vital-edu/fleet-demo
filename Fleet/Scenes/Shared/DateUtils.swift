@@ -8,10 +8,24 @@
 import Foundation
 
 class DateUtils {
-    private(set) static var formatter: ISO8601DateFormatter = {
+    static var fullDateTimeFormatter: ISO8601DateFormatter {
         let localISOFormatter = ISO8601DateFormatter()
         localISOFormatter.formatOptions = [.withFullDate, .withFullTime, .withSpaceBetweenDateAndTime]
         localISOFormatter.timeZone = TimeZone.current
         return localISOFormatter
-    }()
+    }
+
+    static var dayMonthYearFormatter: DateFormatter {
+        let localISOFormatter = DateFormatter()
+        localISOFormatter.dateFormat = "dd/MM/yyyy"
+        localISOFormatter.timeZone = TimeZone.current
+        return localISOFormatter
+    }
+
+    static var yearMonthDayFormatter: ISO8601DateFormatter {
+        let localISOFormatter = ISO8601DateFormatter()
+        localISOFormatter.formatOptions = [.withFullDate]
+        localISOFormatter.timeZone = TimeZone.current
+        return localISOFormatter
+    }
 }

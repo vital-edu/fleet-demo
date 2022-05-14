@@ -8,9 +8,11 @@
 import Foundation
 
 extension Double {
-    func string(zeroes: UInt) -> String {
+    func string(maxZeros: UInt) -> String {
         let formatter = NumberFormatter()
-        formatter.minimumFractionDigits = Int(zeroes)
+        formatter.minimumFractionDigits = Int(maxZeros)
+        formatter.minimumIntegerDigits = 1
+        formatter.maximumFractionDigits = Int(maxZeros)
         if let result = formatter.string(from: NSNumber(value: self)) {
             return result
         } else {

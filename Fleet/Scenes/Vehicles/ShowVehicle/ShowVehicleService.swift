@@ -10,7 +10,7 @@ import UIKit
 
 protocol ShowVehicleServiceProtocol: AnyObject {
     var dataSource: ShowVehicleDataSource { get }
-    func getPositionsOf(vehicleId: String, completion: @escaping (Either<[VehiclePosition], AlertModel>) -> Void)
+    func getPositionsOf(vehicleId: String, at date: Date, completion: @escaping (Either<[VehiclePosition], AlertModel>) -> Void)
 }
 
 class ShowVehicleService: ShowVehicleServiceProtocol {
@@ -20,8 +20,8 @@ class ShowVehicleService: ShowVehicleServiceProtocol {
         self.dataSource = dataSource
     }
 
-    func getPositionsOf(vehicleId: String, completion: @escaping (Either<[VehiclePosition], AlertModel>) -> Void) {
-        dataSource.getPositionFor(vehicleId: vehicleId) { result in
+    func getPositionsOf(vehicleId: String, at date: Date, completion: @escaping (Either<[VehiclePosition], AlertModel>) -> Void) {
+        dataSource.getPositionsOf(vehicleId: vehicleId, at: date) { result in
             switch result {
             case .failure(let error):
                 let alert = AlertModel(
