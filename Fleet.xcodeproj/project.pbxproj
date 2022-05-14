@@ -11,6 +11,7 @@
 		DAF4C02C08D573DAD0E54073 /* Pods_Fleet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E598473EE48E061C5BE3101 /* Pods_Fleet.framework */; };
 		E84AE614282A70AB0020CC1B /* VehiclesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84AE613282A70AB0020CC1B /* VehiclesViewModel.swift */; };
 		E84F7199282F2BEB00C1BBDD /* VehiclePosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84F7198282F2BEB00C1BBDD /* VehiclePosition.swift */; };
+		E84F719B282F4BDC00C1BBDD /* Double+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84F719A282F4BDC00C1BBDD /* Double+Formatter.swift */; };
 		E861C557282B54FD001CD326 /* ApiKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E861C556282B54FD001CD326 /* ApiKeyViewController.swift */; };
 		E87CAAEC282F21750009A8D0 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = E87CAAEB282F21750009A8D0 /* Secrets.plist */; };
 		E87CAAEE282F21F90009A8D0 /* SecretsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87CAAED282F21F90009A8D0 /* SecretsManager.swift */; };
@@ -71,6 +72,7 @@
 		B6FB31E028C93096EA915265 /* Pods-FleetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FleetTests.release.xcconfig"; path = "Target Support Files/Pods-FleetTests/Pods-FleetTests.release.xcconfig"; sourceTree = "<group>"; };
 		E84AE613282A70AB0020CC1B /* VehiclesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesViewModel.swift; sourceTree = "<group>"; };
 		E84F7198282F2BEB00C1BBDD /* VehiclePosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclePosition.swift; sourceTree = "<group>"; };
+		E84F719A282F4BDC00C1BBDD /* Double+Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Formatter.swift"; sourceTree = "<group>"; };
 		E861C556282B54FD001CD326 /* ApiKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyViewController.swift; sourceTree = "<group>"; };
 		E87CAAEB282F21750009A8D0 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		E87CAAED282F21F90009A8D0 /* SecretsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsManager.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				E8AB9BEE282DEC2000A400CB /* Date+Formatter.swift */,
+				E84F719A282F4BDC00C1BBDD /* Double+Formatter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				E8AB9BE8282DB83400A400CB /* BodyResponse.swift in Sources */,
 				E861C557282B54FD001CD326 /* ApiKeyViewController.swift in Sources */,
 				E88E5EEB2829DAD3002CB004 /* ApiKeyViewModel.swift in Sources */,
+				E84F719B282F4BDC00C1BBDD /* Double+Formatter.swift in Sources */,
 				E88E5EE92828BF14002CB004 /* LocalDataStore.swift in Sources */,
 				E84F7199282F2BEB00C1BBDD /* VehiclePosition.swift in Sources */,
 				E87CAAEE282F21F90009A8D0 /* SecretsManager.swift in Sources */,

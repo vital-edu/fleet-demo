@@ -18,6 +18,7 @@ class ShowVehicleViewController: UIViewController, ViewConfiguration {
     private var bottomTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: UIFont.systemFontSize)
         return label
     }()
 
@@ -35,6 +36,11 @@ class ShowVehicleViewController: UIViewController, ViewConfiguration {
         viewModel?.refresh(from: self)
     }
 
+    func configureViews() {
+        navigationItem.backButtonTitle = ""
+        navigationController?.navigationBar.tintColor = .black
+    }
+
     func buildViewHierarchy() {
         view.addSubview(bottomTitleLabel)
     }
@@ -49,7 +55,12 @@ class ShowVehicleViewController: UIViewController, ViewConfiguration {
     private func setupViewModel() {
         guard let viewModel = viewModel else { return }
         navigationItem.title = viewModel.navigationTitle
-        bottomTitleLabel.text = viewModel.bottomTitle.value
+
+        viewModel.bottomTitle.bindAndFire { [weak self] text in
+            guard let self = self else { return }
+            self.bottomTitleLabel.text = text
+            self.view.bringSubviewToFront(self.bottomTitleLabel)
+        }
 
         viewModel.positions.bindAndFire { [weak self] positions in
             guard
@@ -75,7 +86,17 @@ class ShowVehicleViewController: UIViewController, ViewConfiguration {
                 longitude: startPosition.longitude,
                 zoom: 14
             )
-            let mapView = GMSMapView.map(withFrame: self.view.frame, camera: camera)
+            let safeAreaInsets = self.view.safeAreaInsets
+            let mapView = GMSMapView.map(
+                withFrame: self.view.bounds.inset(
+                    by: UIEdgeInsets(
+                        top: safeAreaInsets.top,
+                        left: safeAreaInsets.left,
+                        bottom: .zero,
+                        right: safeAreaInsets.right)
+                    ),
+                camera: camera
+            )
             self.view.addSubview(mapView)
 
             // add start marker
