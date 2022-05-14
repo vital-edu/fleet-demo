@@ -14,7 +14,23 @@ class ShowVehicleViewController: UIViewController, ViewConfiguration {
     private struct ViewMetrics {
         static let bottomPadding = 16.0
         static let searchBarTopPadding = 8.0
+        static let mapCameraPadding = 100.0
+        static let mapStrokeWidth = 2.0
     }
+
+    private lazy var mapView: GMSMapView = {
+        let safeAreaInsets = self.view.safeAreaInsets
+        let map = GMSMapView.map(
+            withFrame: self.view.bounds.inset(by: UIEdgeInsets(
+                top: safeAreaInsets.top,
+                left: safeAreaInsets.left,
+                bottom: .zero,
+                right: safeAreaInsets.right)
+            ),
+            camera: GMSCameraPosition()
+        )
+        return map
+    }()
 
     private var bottomTitleLabel: UILabel = {
         let label = UILabel()
@@ -52,6 +68,7 @@ class ShowVehicleViewController: UIViewController, ViewConfiguration {
     }
 
     func buildViewHierarchy() {
+        view.addSubview(mapView)
         view.addSubview(bottomTitleLabel)
         view.addSubview(searchOptionsView)
     }
@@ -91,6 +108,8 @@ class ShowVehicleViewController: UIViewController, ViewConfiguration {
             else {
                 return
             }
+            self.mapView.clear()
+
             let startPosition = CLLocationCoordinate2D(
                 latitude: firtPosition.latitude,
                 longitude: firtPosition.longitude
@@ -100,25 +119,6 @@ class ShowVehicleViewController: UIViewController, ViewConfiguration {
                 longitude: lastPosition.longitude
             )
 
-            // add camera
-            let camera = GMSCameraPosition.camera(
-                withLatitude: startPosition.latitude,
-                longitude: startPosition.longitude,
-                zoom: 14
-            )
-            let safeAreaInsets = self.view.safeAreaInsets
-            let mapView = GMSMapView.map(
-                withFrame: self.view.bounds.inset(
-                    by: UIEdgeInsets(
-                        top: safeAreaInsets.top,
-                        left: safeAreaInsets.left,
-                        bottom: .zero,
-                        right: safeAreaInsets.right)
-                    ),
-                camera: camera
-            )
-            self.view.addSubview(mapView)
-
             // add start marker
             let startMarker = GMSMarker()
             startMarker.position = CLLocationCoordinate2D(
@@ -126,7 +126,7 @@ class ShowVehicleViewController: UIViewController, ViewConfiguration {
                 longitude: startPosition.longitude
             )
             startMarker.title = viewModel.startMarkerTitle
-            startMarker.map = mapView
+            startMarker.map = self.mapView
 
             // add end marker
             let endMarker = GMSMarker()
@@ -135,7 +135,7 @@ class ShowVehicleViewController: UIViewController, ViewConfiguration {
                 longitude: endPosition.longitude
             )
             endMarker.title = viewModel.endMarkerTitle
-            endMarker.map = mapView
+            endMarker.map = self.mapView
 
             // add location path
             let path = GMSMutablePath()
@@ -145,13 +145,11 @@ class ShowVehicleViewController: UIViewController, ViewConfiguration {
             let polyline = GMSPolyline(path: path)
             polyline.strokeColor = .blue
             polyline.strokeWidth = 2
-            polyline.map = mapView
+            polyline.map = self.mapView
 
             let bounds = GMSCoordinateBounds(coordinate: startPosition, coordinate: endPosition)
-            let update = GMSCameraUpdate.fit(bounds, withPadding: 50.0)
-            mapView.moveCamera(update)
-
-            self.view.sendSubviewToBack(mapView)
+            let cameraUpdate = GMSCameraUpdate.fit(bounds, withPadding: ViewMetrics.mapCameraPadding)
+            self.mapView.moveCamera(cameraUpdate)
         }
     }
 }

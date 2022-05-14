@@ -53,11 +53,11 @@ class ShowVehicleViewModel: ShowVehicleViewModelProtocol {
                 self.delegate?.show(alert: alert, from: viewController)
             case .success(let positions):
                 self.positions.value = positions.map { VehiclePositionViewData(model: $0) }
-                guard let startPosition = positions.first?.distance, let endPosition = positions.last?.distance else {
-                    self.bottomTitle.value = "Trip distance: 0 km"
+                guard let endPosition = positions.last?.distance else {
+                    self.bottomTitle.value = "Trip distance: Unknown"
                     return
                 }
-                let distanceInKm = (endPosition - startPosition).doubleByKilo().string(maxZeros: 3)
+                let distanceInKm = endPosition.doubleByKilo().string(maxZeros: 3)
                 self.bottomTitle.value = "Trip distance: \(distanceInKm) km"
             }
         }
