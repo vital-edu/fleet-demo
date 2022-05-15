@@ -13,7 +13,7 @@ class ShowVehicleViewController: UIViewController, ViewConfiguration {
 
     private struct ViewMetrics {
         static let bottomPadding = 16.0
-        static let searchBarTopPadding = 8.0
+        static let searchBarTopPadding = 4.0
         static let mapCameraPadding = 100.0
         static let mapStrokeWidth = 2.0
     }

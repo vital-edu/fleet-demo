@@ -7,15 +7,24 @@
 
 import UIKit
 
-class VehiclesViewController: UITableViewController {
+class VehiclesViewController: UIViewController, ViewConfiguration {
     var viewModel: VehiclesViewModelProtocol? {
         didSet { setupUI() }
     }
 
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(VehicleCell.self, forCellReuseIdentifier: VehicleCell.identifier)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        buildLayout()
         setupNavigationBar()
-        setupTableView()
         setupUI()
         viewModel?.refresh(from: self)
     }
@@ -37,6 +46,19 @@ class VehiclesViewController: UITableViewController {
         })
     }
 
+    func buildViewHierarchy() {
+        view.addSubview(tableView)
+    }
+
+    func setupConstraints() {
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+    }
+
     @objc private func refresh() {
         viewModel?.refresh(from: self)
     }
@@ -44,20 +66,18 @@ class VehiclesViewController: UITableViewController {
     @objc private func changeApiKey() {
         viewModel?.changeApiKey(from: self)
     }
+}
 
-    private func setupTableView() {
-        tableView.register(VehicleCell.self, forCellReuseIdentifier: VehicleCell.identifier)
-    }
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
+extension VehiclesViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.items.value.count ?? 0
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: VehicleCell.identifier) as? VehicleCell, let item = viewModel?.items.value[indexPath.row] else {
             return UITableViewCell()
         }
@@ -66,8 +86,10 @@ class VehiclesViewController: UITableViewController {
 
         return cell
     }
+}
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+extension VehiclesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel?.didSelect(row: indexPath.row, from: self)
     }
 }
