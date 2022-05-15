@@ -10,7 +10,7 @@ import UIKit
 class SearchOptionsView: UIView, ViewConfiguration {
     private struct ViewMetrics {
         static let spacing = 16.0
-        static let topMargin = 8.0
+        static let topMargin = 4.0
         static let bottomMargin = 8.0
         static let leadingMargin = 16.0
         static let trailingMargin = 16.0
@@ -54,7 +54,6 @@ class SearchOptionsView: UIView, ViewConfiguration {
         let button = UIButton()
         button.setImage(UIImage(named: "calendar"), for: .normal)
         button.addTarget(self, action: #selector(datePickerClicked), for: .touchUpInside)
-        button.tintColor = .black
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -62,6 +61,13 @@ class SearchOptionsView: UIView, ViewConfiguration {
     private var datePicker: UIDatePicker = {
         let view = UIDatePicker()
         view.datePickerMode = .date
+        if #available(iOS 13.4, *) {
+            if #available(iOS 14.0, *) {
+                view.preferredDatePickerStyle = .inline
+            } else {
+                view.preferredDatePickerStyle = .wheels
+            }
+        }
         return view
     }()
 
@@ -108,13 +114,17 @@ class SearchOptionsView: UIView, ViewConfiguration {
         super.init(frame: frame)
         buildLayout()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     func configureViews() {
-        backgroundColor = .white
+        if #available(iOS 13.0, *) {
+            backgroundColor = .systemBackground
+        } else {
+            backgroundColor = .white
+        }
     }
 
     func buildViewHierarchy() {

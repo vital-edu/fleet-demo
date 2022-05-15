@@ -29,7 +29,6 @@ class DatePickerViewController: UIViewController, ViewConfiguration {
         let button = UIButton()
         button.setTitle("Done", for: .normal)
         button.addTarget(self, action: #selector(updateDate), for: .touchUpInside)
-        button.tintColor = .black
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

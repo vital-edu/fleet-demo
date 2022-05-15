@@ -19,13 +19,14 @@ class ShowVehicleViewController: UIViewController, ViewConfiguration {
     }
 
     private lazy var mapView: GMSMapView = {
-        let safeAreaInsets = self.view.safeAreaInsets
+        let navigationBarFrame = self.navigationController?.navigationBar.frame
+        let statusBarHeight = UIApplication.shared.statusBarFrame.height
         let map = GMSMapView.map(
             withFrame: self.view.bounds.inset(by: UIEdgeInsets(
-                top: safeAreaInsets.top,
-                left: safeAreaInsets.left,
+                top: (navigationBarFrame?.height ?? 0) + statusBarHeight,
+                left: .zero,
                 bottom: .zero,
-                right: safeAreaInsets.right)
+                right: .zero)
             ),
             camera: GMSCameraPosition()
         )
@@ -51,7 +52,6 @@ class ShowVehicleViewController: UIViewController, ViewConfiguration {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = .white
         buildLayout()
         setupViewModel()
     }
@@ -63,8 +63,11 @@ class ShowVehicleViewController: UIViewController, ViewConfiguration {
     }
 
     func configureViews() {
-        navigationItem.backButtonTitle = ""
-        navigationController?.navigationBar.tintColor = .black
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = .systemBackground
+        } else {
+            view.backgroundColor = .white
+        }
     }
 
     func buildViewHierarchy() {
