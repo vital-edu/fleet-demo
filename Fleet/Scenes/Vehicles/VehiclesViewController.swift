@@ -90,6 +90,7 @@ extension VehiclesViewController: UITableViewDataSource {
 
 extension VehiclesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         viewModel?.didSelect(row: indexPath.row, from: self)
     }
 }

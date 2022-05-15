@@ -99,7 +99,8 @@ class SearchOptionsView: UIView, ViewConfiguration {
 
     public var date: Date = Date() {
         didSet {
-            dateLabel.text = dateFormatter.string(from: date)
+            dateTextField.text = dateFormatter.string(from: date)
+            datePicker.date = date
         }
     }
 
@@ -163,10 +164,12 @@ class SearchOptionsView: UIView, ViewConfiguration {
     }
 
     @objc private func saveDate() {
-        let date = datePicker.date
-        dateTextField.text = dateFormatter.string(from: date)
         hiddenTextField.resignFirstResponder()
-        onDatePickerClicked?(date)
+        let newDate = datePicker.date
+        if dateFormatter.string(from: newDate) != dateFormatter.string(from: date) {
+            self.date = newDate
+            onDatePickerClicked?(date)
+        }
     }
 
     private var dateRegex = try! NSRegularExpression(pattern: "^[0-9]{0,2}/?[0-9]{0,2}/?[0-9]{0,4}$")
@@ -174,12 +177,17 @@ class SearchOptionsView: UIView, ViewConfiguration {
 
 extension SearchOptionsView: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let stringDate = textField.text, let date = dateFormatter.date(from: stringDate) else {
+        guard
+            let newStringDate = textField.text,
+            let newDate = dateFormatter.date(from: newStringDate)
+        else {
             textField.text = dateFormatter.string(from: date)
             return
         }
-        textField.text = dateFormatter.string(from: date)
-        onDatePickerClicked?(date)
+        if newStringDate != dateFormatter.string(from: date) {
+            onDatePickerClicked?(newDate)
+            date = newDate
+        }
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
