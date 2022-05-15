@@ -7,7 +7,7 @@
 
 import UIKit
 
-class VehiclesViewController: UIViewController, ViewConfiguration {
+class VehiclesViewController: BaseViewController, ViewConfiguration {
     var viewModel: VehiclesViewModelProtocol? {
         didSet { setupUI() }
     }

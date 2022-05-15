@@ -8,7 +8,7 @@
 import UIKit
 import GoogleMaps
 
-class ShowVehicleViewController: UIViewController, ViewConfiguration {
+class ShowVehicleViewController: BaseViewController, ViewConfiguration {
     var viewModel: ShowVehicleViewModel?
 
     private struct ViewMetrics {

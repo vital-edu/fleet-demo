@@ -24,7 +24,7 @@ protocol ShowVehicleViewModelProtocol: AnyObject {
     var bottomTitle: Dynamic<String> { get }
 
     // MARK: - Events
-    func fetchVehiclePositions(at date: Date, viewController: UIViewController)
+    func fetchVehiclePositions(at date: Date, viewController: BaseViewController)
 }
 
 class ShowVehicleViewModel: ShowVehicleViewModelProtocol {
@@ -44,10 +44,12 @@ class ShowVehicleViewModel: ShowVehicleViewModelProtocol {
         self.navigationTitle = "Location history: \(vehicle.plate)"
     }
 
-    func fetchVehiclePositions(at date: Date, viewController: UIViewController) {
+    func fetchVehiclePositions(at date: Date, viewController: BaseViewController) {
+        viewController.setLoading(show: true)
         let vehicleId = "\(vehicle.objectId)"
         service.getPositionsOf(vehicleId: vehicleId, at: date) { [weak self] result in
             guard let self = self else { return }
+            viewController.setLoading(show: false)
             switch result {
             case .failure(let alert):
                 self.delegate?.show(alert: alert, from: viewController)

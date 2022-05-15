@@ -24,9 +24,9 @@ protocol VehiclesViewModelProtocol {
 
     // MARK: - Events
 
-    func didSelect(row: Int, from controller: UIViewController)
-    func refresh(from controller: UIViewController)
-    func changeApiKey(from controller: UIViewController)
+    func didSelect(row: Int, from controller: BaseViewController)
+    func refresh(from controller: BaseViewController)
+    func changeApiKey(from controller: BaseViewController)
 }
 
 class VehiclesViewModel: VehiclesViewModelProtocol {
@@ -45,13 +45,15 @@ class VehiclesViewModel: VehiclesViewModelProtocol {
         self.service = service
     }
 
-    func didSelect(row: Int, from controller: UIViewController) {
+    func didSelect(row: Int, from controller: BaseViewController) {
         delegate?.didSelect(vehicle: vehicles[row], from: controller)
     }
 
-    func refresh(from controller: UIViewController) {
+    func refresh(from controller: BaseViewController) {
+        controller.setLoading(show: true)
         service.getVehicles { [weak self] result in
             guard let self = self else { return }
+            controller.setLoading(show: false)
             switch result {
             case .success(let vehicles):
                 self.vehicles = vehicles
@@ -61,7 +63,7 @@ class VehiclesViewModel: VehiclesViewModelProtocol {
         }
     }
 
-    func changeApiKey(from controller: UIViewController) {
+    func changeApiKey(from controller: BaseViewController) {
         delegate?.didSelectApiKey(from: controller) { [weak self] success in
             if success {
                 self?.refresh(from: controller)
