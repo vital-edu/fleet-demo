@@ -26,6 +26,7 @@ class VehiclesCoordinator: Coordinator {
         let viewModel = VehiclesViewModel(service: service)
         viewModel.delegate = self
         viewController.viewModel = viewModel
+        rootViewController?.delegate = self
         rootViewController?.setViewControllers([viewController], animated: false)
     }
 
@@ -66,5 +67,21 @@ extension VehiclesCoordinator: VehiclesViewModelCoordinatorDelegate {
 extension VehiclesCoordinator: ApiKeyCoordinatorDelegate {
     func didFinish(from coordinator: ApiKeyCoordinator) {
         removeChild(coordinator)
+    }
+}
+
+extension VehiclesCoordinator: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        guard let fromViewController = navigationController.transitionCoordinator?.viewController(forKey: .from) else {
+            return
+        }
+
+        if navigationController.viewControllers.contains(fromViewController) {
+            return
+        }
+
+        if fromViewController is ShowVehicleViewController {
+            removeAllChildren(of: ShowVehicleCoordinator.self)
+        }
     }
 }

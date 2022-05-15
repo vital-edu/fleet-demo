@@ -5,9 +5,9 @@
 //  Created by Eduardo Vital Alencar Cunha on 08/05/2022.
 //
 
-import Foundation
+import UIKit
 
-class Coordinator {
+class Coordinator: NSObject {
     private(set) var childCoordinators = [Coordinator]()
 
     func start() {
@@ -30,17 +30,11 @@ class Coordinator {
         childCoordinators.remove(at: index)
     }
 
-    func removeAllChildren<T: Coordinator>(of type: T) {
+    func removeAllChildren<T: Coordinator>(of type: T.Type) {
         childCoordinators = childCoordinators.filter { $0 is T == false }
     }
 
     func removeAllChildren() {
         childCoordinators.removeAll()
-    }
-}
-
-extension Coordinator: Equatable {
-    static func == (lhs: Coordinator, rhs: Coordinator) -> Bool {
-        return lhs === rhs
     }
 }
